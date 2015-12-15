@@ -60,8 +60,8 @@ public class EducationInfo implements Serializable
 	
 	@ManyToOne
 	@JoinTable(name="os_member_education",  
-	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_education_id",referencedColumnName="PK_ei_education_id")})
+	joinColumns={@JoinColumn(name="FK_education_id",referencedColumnName="PK_ei_education_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
 	private MemberInfo memberinfo;
 		
 

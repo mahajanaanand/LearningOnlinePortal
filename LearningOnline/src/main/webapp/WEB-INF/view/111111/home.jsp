@@ -3,6 +3,9 @@
 <%@include file="/resources/static/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<style>
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,6 +203,10 @@
 				 var ul_id=$(this).closest("ul").attr("id");
 				 $("#"+ul_id).find(".active-li").removeClass("active-li");
 				 $(this).addClass("active-li");
+			 });
+			 $("#dob").datepicker({
+				  altFormat: "dd-mm-yyyy",
+			 		inline:true
 			 });
 		 });
 	</script>

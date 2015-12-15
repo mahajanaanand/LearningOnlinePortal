@@ -62,8 +62,8 @@ public class OccupationInfo implements Serializable
 	
 	@ManyToOne
 	@JoinTable(name="os_member_occupation",  
-	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_occupation_id",referencedColumnName="PK_oi_occupation_id")})
+	joinColumns={@JoinColumn(name="FK_occupation_id",referencedColumnName="PK_oi_occupation_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
 	private MemberInfo memberinfo;
 
 	public int getOccupationId() {

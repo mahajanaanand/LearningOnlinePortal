@@ -34,7 +34,7 @@ public class ChapterCategory implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="PK_chc_chpter_id")
+	@Column(name="PK_chc_chapter_id")
 	private int chapterId;
 	@Column(name="chc_title")
 	@NotEmpty
@@ -52,18 +52,14 @@ public class ChapterCategory implements Serializable
 	
 	@ManyToOne
 	@JoinTable(name="os_subject_chapter",  
-	joinColumns={@JoinColumn(name="FK_subject_id",referencedColumnName="PK_suc_subject_id")}, 
-    inverseJoinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chpter_id")}) 
+	joinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chapter_id")}, 
+    inverseJoinColumns={@JoinColumn(name="FK_subject_id",referencedColumnName="PK_suc_subject_id")}) 
 	private SubjectCategory subjectCategory;
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="chapterCategory", cascade=CascadeType.ALL)
 	private Set<TopicCategory> topicCategory;
-	
-	@JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="chapterCategory", cascade=CascadeType.ALL) 
-    private Set<CategoryClass> categoryClasses;
-	
+		
 	public int getChapterId() {
 		return chapterId;
 	}
@@ -127,15 +123,5 @@ public class ChapterCategory implements Serializable
 	public void setTopicCategory(Set<TopicCategory> topicCategory) {
 		this.topicCategory = topicCategory;
 	}
-
-	public Set<CategoryClass> getCategoryClasses() {
-		return categoryClasses;
-	}
-
-	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
-		this.categoryClasses = categoryClasses;
-	}
-	
-	
 
 }

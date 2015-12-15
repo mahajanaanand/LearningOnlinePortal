@@ -54,6 +54,7 @@ public class ChapterCategory implements Serializable
 	joinColumns={@JoinColumn(name="FK_subject_id",referencedColumnName="PK_suc_subject_id")}, 
     inverseJoinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chpter_id")}) 
 	private SubjectCategory subjectCategory;
+	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="chapterCategory", cascade=CascadeType.ALL)
 	private Set<TopicCategory> topicCategory;

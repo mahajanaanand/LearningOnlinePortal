@@ -43,6 +43,7 @@ public class CourseCategory implements Serializable
     private int flag ;
     @Column(name="coc_remark")
     private String remark ;
+   
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL)
     private Set<SubjectCategory> subjectCategory;

@@ -1,0 +1,1 @@
+<%response.sendRedirect("betaVersion/111111/redirectHome");%>

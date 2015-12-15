@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+    <diskStore path="cacheIO" />
+ 
+    <defaultCache maxElementsInMemory="10000" eternal="true"
+                  overflowToDisk="false" diskPersistent="false"
+                  diskExpiryThreadIntervalSeconds="1800" memoryStoreEvictionPolicy="FIFO">
+    </defaultCache>
+ 	
+    <cache name="fss.oe.sellererp.domain.DMAdReference"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"/>
+           
+     <cache name="fss.oe.sellererp.domain.DMBusinessNature"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"/>
+           
+	<cache name="fss.oe.sellererp.domain.DMProductSelType"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"/>
+     <cache name="fss.oe.sellererp.domain.BrandModel"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"/>
+     <cache name="fss.oe.sellererp.domain.OfferInventory"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="1800"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"/>
+     <cache name="org.hibernate.cache.internal.StandardQueryCache"
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            memoryStoreEvictionPolicy="LRU" />
+           
+</ehcache>

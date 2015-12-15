@@ -26,38 +26,40 @@
             <div class="register-now-heading">not a member yet register now</div>	
             <div class="">
                     <fieldset>
-                    	<form:form id="registerForm" action="" commandName="">
+                    	<form:form id="registerForm" action="registerStepOne" commandName="memberInfo">
                         <div class="form-group">
                             <span class="lab reg-name"></span>
-							<form:input path="" class="form-control input-lg" placeholder="Name" name="Name" type="text"/>
-				
+							<form:input path="memberInfo.memberName" class="form-control input-lg" placeholder="Name" name="Name" id="home_reg_name"/>
+							<form:errors path="memberName" cssClass="errors" element="div"/>
                         </div>
 						<div class="form-group">
                             <span class="lab reg-mobile"></span>
-							<input class="form-control input-lg" placeholder="Mobile" name="Mobile" type="text">
-							<form:input path=""/>
-                        </div>
+							<form:input path="memberMobile" class="form-control input-lg" placeholder="Mobile" name="Mobile" id="home_reg_mobile"/>
+						    <form:errors path="memberMobile" cssClass="error"/>
+						</div>
 						<div class="form-group">
                             <span class="lab reg-email"></span>
-							<input class="form-control input-lg" placeholder="Email" name="Email" type="text">
-							<form:input path=""/>
-                        </div>
+							<form:input path="memberEmail" class="form-control input-lg" placeholder="Email" name="Email" id="home_reg_email"/>
+						    <form:errors path="memberEmail" cssClass="error"/>
+						</div>
 						<div class="form-group">
                             <span class="lab reg-dob"></span>
-							<input class="form-control input-lg" placeholder="Date of Birth" name="Dob" type="text">
-                       		<form:input path=""/>
-                        </div>
+						    <form:input path="dateOfBirth" class="form-control input-lg" placeholder="Date of Birth" name="Dob" id="home_reg_dob"/>
+<%--                        		<form:errors path="dateOfBirth" cssClass="error"/> --%>
+                       	</div>
                        <div class="form-group">
 						   <span class="lab reg-sex"></span>
-                            <div class="select-control" id="reg-gender">Gender</div>
-						   	<div  class="select-list clear-both" id="select-list-reg-gender">
+                            <div class="select-control" id="home-reg-gender">Gender</div>
+						   	<div  class="select-list clear-both" id="select-list-home-reg-gender">
 						   		<ul id="gender">
-									<li>Male</li>
-									<li>Female</li>
+									<li id="1">Male</li>
+									<li id="2">Female</li>
 								</ul>
 						   	</div>
                         </div>
-						<div class="form-group btn-reg-con">REGISTER NOW</div>
+                         <form:hidden path="memberGender" id="gender_option"/>
+<%--                          <form:errors path="memberGender" cssClass="error"/> --%>
+						<div class="form-group btn-reg-con" id="btn_home_register">REGISTER NOW</div>
 					</form:form>
                     </fieldset>
                 </div>
@@ -200,13 +202,18 @@
 				 $(".select-list").slideUp(300);
 			 });
 			 $(".select-list li").on('click',function (){
-				 var ul_id=$(this).closest("ul").attr("id");
+				 var $this=$(this);
+				 var ul_id=$this.closest("ul").attr("id");
 				 $("#"+ul_id).find(".active-li").removeClass("active-li");
-				 $(this).addClass("active-li");
+				 $this.addClass("active-li");
+				$("#gender_option").val($this.attr("id"));
 			 });
 			 $("#dob").datepicker({
 				  altFormat: "dd-mm-yyyy",
 			 		inline:true
+			 });
+			 $("#registerForm").find("#btn_home_register").on('click',function(){
+				 $("#registerForm").submit();
 			 });
 		 });
 	</script>

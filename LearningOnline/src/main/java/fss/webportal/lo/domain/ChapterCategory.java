@@ -27,6 +27,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_chapter_cat")
 public class ChapterCategory implements Serializable
 {
+	
     public ChapterCategory(){
 	}
     

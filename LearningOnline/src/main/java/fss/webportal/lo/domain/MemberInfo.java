@@ -24,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_member_info")
 public class MemberInfo implements Serializable
 {
+	
 	public MemberInfo()
 	{}
 	private static final long serialVersionUID = 1L;

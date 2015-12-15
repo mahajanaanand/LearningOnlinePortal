@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 
 
 
-	/*@Override
+	@Override
 	public void configure(WebSecurity web) throws Exception  {
 	    web.ignoring().antMatchers("/resources/**").antMatchers("/dynamicData/**");
-	  }*/
+	  }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception 

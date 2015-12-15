@@ -25,6 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_qfeed_submission")
 public class QFeedSubmission implements Serializable
 {
+	
 	public QFeedSubmission()
 	{}
 	private static final long serialVersionUID = 1L; 

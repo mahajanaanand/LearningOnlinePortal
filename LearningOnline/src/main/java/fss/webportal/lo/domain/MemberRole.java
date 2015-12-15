@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name="os_member_role")
 public class MemberRole implements Serializable
 {
+	
 	public MemberRole()
 	{}
 	private static final long serialVersionUID = 1L;

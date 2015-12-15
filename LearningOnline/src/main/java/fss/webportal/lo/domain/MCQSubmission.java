@@ -18,6 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_mcq_submission")
 public class MCQSubmission implements Serializable
 {
+	
 	public MCQSubmission()
 	{}
 	private static final long serialVersionUID = 1L;

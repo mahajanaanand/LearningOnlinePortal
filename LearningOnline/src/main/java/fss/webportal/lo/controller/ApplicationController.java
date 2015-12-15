@@ -5,17 +5,21 @@ import java.io.StringWriter;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import fss.webportal.lo.domain.MemberInfo;
+import fss.webportal.lo.formWrapper.FormRegistration;
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
@@ -38,8 +42,9 @@ public class ApplicationController{
 	private String NO_DATA_FOUND;
 	
 	@RequestMapping(value="/redirectHome")
-	public String redirectHome(){
-		return "111111/home";
+	public ModelAndView redirectHome(){
+		
+		return new ModelAndView("111111/home","memberInfo",new MemberInfo());
 	}
 	@RequestMapping(value="/redirectCategory")
 	public String redirectCategory(){
@@ -88,6 +93,18 @@ public class ApplicationController{
 		model.setViewName("111111/preAccessLogin");
 		return model;
 
+	}
+	@RequestMapping(value="/registerStepOne")
+	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")@Valid MemberInfo memberInfo,BindingResult result){
+		System.out.println("Errors"+result.getErrorCount());
+		if(result.hasErrors()){
+			return new ModelAndView("111111/home","memberInfo",memberInfo);
+		}
+		else{
+			FormRegistration formRegistration=new FormRegistration();
+			formRegistration.setMemberInfo(memberInfo);
+			return new ModelAndView("memberProfile","formRegistration", formRegistration);	
+			}
 	}
 	private String getErrorMessage(HttpServletRequest request, String key) {
 		Exception exception = (Exception) request.getSession().getAttribute(key);

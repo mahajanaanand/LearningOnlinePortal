@@ -11,9 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -70,23 +67,19 @@ public class MemberInfo implements Serializable
 	private String remark;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberinfo", cascade=javax.persistence.CascadeType.ALL) 
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberInfo", cascade=CascadeType.ALL) 
 	private Set<EducationInfo> educationInfo;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberinfo", cascade=javax.persistence.CascadeType.ALL) 
-	private Set<OccupationInfo> occupationinfo;
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberInfo", cascade=CascadeType.ALL) 
+	private Set<OccupationInfo> occupationInfo;
 	
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberinfo", cascade=javax.persistence.CascadeType.ALL) 
-	private Set<MemberRole> memberrole;
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="memberInfoLogin", cascade=CascadeType.ALL)
+	private MemberLogin memberLogin;
 	
 	@JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY,mappedBy="memberinfo", cascade=CascadeType.ALL)
-	private MemberLogin memberlogin;
-	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmissionMenber", cascade=javax.persistence.CascadeType.ALL) 
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmissionMember", cascade=CascadeType.ALL) 
 	private Set<QFeedSubmission> qFeedSubmissions;
 			
 	public Set<EducationInfo> getEducationInfo() {
@@ -97,30 +90,6 @@ public class MemberInfo implements Serializable
 		this.educationInfo = educationInfo;
 	}
 
-	public Set<OccupationInfo> getOccupationinfo() {
-		return occupationinfo;
-	}
-
-	public void setOccupationinfo(Set<OccupationInfo> occupationinfo) {
-		this.occupationinfo = occupationinfo;
-	}
-
-	public Set<MemberRole> getMemberrole() {
-		return memberrole;
-	}
-
-	public void setMemberrole(Set<MemberRole> memberrole) {
-		this.memberrole = memberrole;
-	}
-
-	public MemberLogin getMemberlogin() {
-		return memberlogin;
-	}
-
-	public void setMemberlogin(MemberLogin memberlogin) {
-		this.memberlogin = memberlogin;
-	}
-	
 	public int getMemberId() 
 	{
 		return memberId;
@@ -288,6 +257,22 @@ public class MemberInfo implements Serializable
 
 	public void setqFeedSubmissions(Set<QFeedSubmission> qFeedSubmissions) {
 		this.qFeedSubmissions = qFeedSubmissions;
+	}
+
+	public Set<OccupationInfo> getOccupationInfo() {
+		return occupationInfo;
+	}
+
+	public void setOccupationInfo(Set<OccupationInfo> occupationInfo) {
+		this.occupationInfo = occupationInfo;
+	}
+
+	public MemberLogin getMemberLogin() {
+		return memberLogin;
+	}
+
+	public void setMemberLogin(MemberLogin memberLogin) {
+		this.memberLogin = memberLogin;
 	}
 	
 }

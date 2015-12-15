@@ -63,7 +63,7 @@ public class OccupationInfo implements Serializable
 	@JoinTable(name="os_member_occupation",  
 	joinColumns={@JoinColumn(name="FK_occupation_id",referencedColumnName="PK_oi_occupation_id")},  
 	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
-	private MemberInfo memberinfo;
+	private MemberInfo memberInfo;
 
 	public int getOccupationId() {
 		return occupationId;

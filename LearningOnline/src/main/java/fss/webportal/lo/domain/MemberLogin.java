@@ -1,15 +1,20 @@
 package fss.webportal.lo.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -25,7 +30,7 @@ public class MemberLogin implements Serializable
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="PK_mi_member_id")
-	@GenericGenerator(name = "generator", strategy = "foreign",parameters = @Parameter(name = "property", value = "memberinfo"))
+	@GenericGenerator(name = "generator", strategy = "foreign",parameters = @Parameter(name = "property", value = "memberInfoLogin"))
 	@GeneratedValue(generator = "generator")
 	private int memberId;
 	@Column(name="ml_password")
@@ -37,7 +42,13 @@ public class MemberLogin implements Serializable
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
-	private MemberInfo memberinfo;
+	private MemberInfo memberInfoLogin;
+	
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
+	@JoinTable(name="os_member_loin_role",  
+	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_role_id",referencedColumnName="PK_mr_role_id")})
+	private Set<MemberRole> memberRoles;
 	
 	
 	public int getMemberId() {
@@ -63,6 +74,18 @@ public class MemberLogin implements Serializable
 	}
 	public void setFlag(int flag) {
 		this.flag = flag;
+	}
+	public MemberInfo getMemberInfoLogin() {
+		return memberInfoLogin;
+	}
+	public void setMemberInfoLogin(MemberInfo memberInfoLogin) {
+		this.memberInfoLogin = memberInfoLogin;
+	}
+	public Set<MemberRole> getMemberRoles() {
+		return memberRoles;
+	}
+	public void setMemberRoles(Set<MemberRole> memberRoles) {
+		this.memberRoles = memberRoles;
 	}
 	
 }

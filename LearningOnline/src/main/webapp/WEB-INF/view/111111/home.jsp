@@ -197,10 +197,7 @@
 				 $("#"+ul_id).find(".active-li").removeClass("active-li");
 				 $(this).addClass("active-li");
 			 });
-			 $("#dob").datepicker({
-				  altFormat: "dd-mm-yyyy",
-			 		inline:true
-			 });
+			 $("#dob").datepicker({ dateFormat: 'dd/mm/yy'});
 		 });
 	</script>
 </body>

@@ -59,7 +59,7 @@ public class QFeedSubmission implements Serializable
 	@JoinTable(name="os_qfeed_submission_info",  
 	joinColumns={@JoinColumn(name="FK_qfeed_id",referencedColumnName="PK_qs_qfeed_id")},  
 	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
-	private MemberInfo qfeedsubmissionMenber;
+	private MemberInfo qfeedsubmissionMember;
 	
 	public CategoryClass getCategoryclassQFeed() {
 		return categoryclassQFeed;
@@ -168,12 +168,12 @@ public class QFeedSubmission implements Serializable
 		return serialVersionUID;
 	}
 
-	public MemberInfo getQfeedsubmissionMenber() {
-		return qfeedsubmissionMenber;
+	public MemberInfo getQfeedsubmissionMember() {
+		return qfeedsubmissionMember;
 	}
 
-	public void setQfeedsubmissionMenber(MemberInfo qfeedsubmissionMenber) {
-		this.qfeedsubmissionMenber = qfeedsubmissionMenber;
+	public void setQfeedsubmissionMember(MemberInfo qfeedsubmissionMember) {
+		this.qfeedsubmissionMember = qfeedsubmissionMember;
 	}
 	
 }

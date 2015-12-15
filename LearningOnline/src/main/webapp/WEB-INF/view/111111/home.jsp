@@ -23,21 +23,26 @@
             <div class="register-now-heading">not a member yet register now</div>	
             <div class="">
                     <fieldset>
+                    	<form:form id="registerForm" action="" commandName="">
                         <div class="form-group">
                             <span class="lab reg-name"></span>
-							<input class="form-control input-lg" placeholder="Name" name="Name" type="text">
+							<form:input path="" class="form-control input-lg" placeholder="Name" name="Name" type="text"/>
+				
                         </div>
 						<div class="form-group">
                             <span class="lab reg-mobile"></span>
-							<input class="form-control input-lg" placeholder="Mobile" name="Name" type="text">
+							<input class="form-control input-lg" placeholder="Mobile" name="Mobile" type="text">
+							<form:input path=""/>
                         </div>
 						<div class="form-group">
                             <span class="lab reg-email"></span>
-							<input class="form-control input-lg" placeholder="Email" name="Name" type="text">
+							<input class="form-control input-lg" placeholder="Email" name="Email" type="text">
+							<form:input path=""/>
                         </div>
 						<div class="form-group">
                             <span class="lab reg-dob"></span>
-							<input class="form-control input-lg" placeholder="Date of Birth" name="Name" type="text">
+							<input class="form-control input-lg" placeholder="Date of Birth" name="Dob" type="text">
+                       		<form:input path=""/>
                         </div>
                        <div class="form-group">
 						   <span class="lab reg-sex"></span>
@@ -50,6 +55,7 @@
 						   	</div>
                         </div>
 						<div class="form-group btn-reg-con">REGISTER NOW</div>
+					</form:form>
                     </fieldset>
                 </div>
             </div>

@@ -81,7 +81,17 @@ public class MemberInfo implements Serializable
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmissionMember", cascade=CascadeType.ALL) 
 	private Set<QFeedSubmission> qFeedSubmissions;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="groupEntryMemberInfo", cascade=CascadeType.ALL) 
+	private Set<GroupEntry> groupEntries;
 			
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfo")
+	private Set<GroupRequest> groupRequests;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfoNoti")
+	private Set<GroupNotification> groupNotifications;
+	
 	public Set<EducationInfo> getEducationInfo() {
 		return educationInfo;
 	}
@@ -274,5 +284,30 @@ public class MemberInfo implements Serializable
 	public void setMemberLogin(MemberLogin memberLogin) {
 		this.memberLogin = memberLogin;
 	}
+
+	public Set<GroupEntry> getGroupEntries() {
+		return groupEntries;
+	}
+
+	public void setGroupEntries(Set<GroupEntry> groupEntries) {
+		this.groupEntries = groupEntries;
+	}
+
+	public Set<GroupRequest> getGroupRequests() {
+		return groupRequests;
+	}
+
+	public void setGroupRequests(Set<GroupRequest> groupRequests) {
+		this.groupRequests = groupRequests;
+	}
+
+	public Set<GroupNotification> getGroupNotifications() {
+		return groupNotifications;
+	}
+
+	public void setGroupNotifications(Set<GroupNotification> groupNotifications) {
+		this.groupNotifications = groupNotifications;
+	}
+	
 	
 }

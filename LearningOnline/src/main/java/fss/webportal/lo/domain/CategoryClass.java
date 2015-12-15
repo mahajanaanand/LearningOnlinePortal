@@ -2,6 +2,7 @@ package fss.webportal.lo.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -44,9 +44,12 @@ public class CategoryClass
 	private TopicCategory topicCategory;
 		
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryclassQFeed", cascade=javax.persistence.CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryclassQFeed", cascade=CascadeType.ALL)
 	private Set<QFeedSubmission> qfeedSubmissionCategory;
 	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryClass", cascade=CascadeType.ALL) 
+	private Set<GroupEntry> groupEntries; 
 	
 	public int getCategoryClassId() {
 		return categoryClassId;
@@ -112,6 +115,13 @@ public class CategoryClass
 			Set<QFeedSubmission> qfeedSubmissionCategory) {
 		this.qfeedSubmissionCategory = qfeedSubmissionCategory;
 	}
-	
 
+	public Set<GroupEntry> getGroupEntries() {
+		return groupEntries;
+	}
+
+	public void setGroupEntries(Set<GroupEntry> groupEntries) {
+		this.groupEntries = groupEntries;
+	}
+	
 }

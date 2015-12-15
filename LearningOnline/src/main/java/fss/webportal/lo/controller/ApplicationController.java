@@ -1,12 +1,42 @@
 package fss.webportal.lo.controller;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
 public class ApplicationController{
 
+	private final static String UNSUCCESS="UNSUCCESS";
+	private final static String SUCCESS="SUCCESS";
+	private final static String REQ_GP_REGISTER_TRYONCE="/registerTRYONCE";
+	private final static String VIEW_REGISTER_TRYONCE="registerTRYONCE";
+	private final static String REDIRECT_403="redirect:/static/403";
+	
+	
+	@Value("${logout}")
+	private String MESSAGE_LOGOUT;
+	@Value("${failedLogin}")
+	private String FAILED_LOGIN;
+	@Value("${sellerRegisterException}")
+	private String SELLER_REGISTER_EX;
+	@Value("${no_data_found}")
+	private String NO_DATA_FOUND;
+	
 	@RequestMapping(value="/redirectHome")
 	public String redirectHome(){
 		return "111111/home";
@@ -42,5 +72,59 @@ public class ApplicationController{
 	@RequestMapping(value="/memberProfile")
 	public String memberProfile(){
 		return "111111/memberProfile";
+	}	
+
+	@RequestMapping(value = "/preAccessLogin", method = RequestMethod.GET)
+	public ModelAndView loginTRYONCE(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout,HttpServletRequest request) {		
+		ModelAndView model = new ModelAndView();
+		if (error != null) {
+			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+		}
+		if (logout != null) {
+			model.addObject("msg",MESSAGE_LOGOUT);
+		}
+		//model.addObject("preAccessLogin",);
+		model.setViewName("login");
+		return model;
+
+	}
+	private String getErrorMessage(HttpServletRequest request, String key) {
+		Exception exception = (Exception) request.getSession().getAttribute(key);
+		String error = "";
+		if (exception instanceof BadCredentialsException) {
+			error = FAILED_LOGIN;
+		} else if (exception instanceof LockedException) {
+			error = exception.getMessage();
+		} else 	{
+			error = FAILED_LOGIN;
+		}
+		return error;
+	}
+	/*private String getDataForValidation(final DMSellerRegistration sellerRegistration, final DMSellerLogin sellerLogin, final DMSellerProfile sellerProfile)	{
+		String result=UNSUCCESS;
+		try{
+			sellerLogin.setUsername(sellerProfile.getContactPersonEmail());
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(new Date());
+			StringBuffer setPassword=new StringBuffer();
+			setPassword.append(calendar.get(Calendar.DATE)).append(calendar.get(Calendar.HOUR_OF_DAY)).append(calendar.get(Calendar.MINUTE)).append(calendar.get(Calendar.SECOND)).append(randInt());
+			sellerLogin.setPassword(setPassword.toString());
+			result=SUCCESS;
+		}
+		catch(Exception exception){ result=getStackTrace(exception);}
+		return result;
+	}*/
+	private int randInt() {
+	    Random rand = new Random();
+	    int randomNum = rand.nextInt(20);
+	    return randomNum;
+	}
+
+	public static String getStackTrace(final Throwable throwable) {
+	     final StringWriter sw = new StringWriter();
+	     final PrintWriter pw = new PrintWriter(sw, true);
+	     throwable.printStackTrace(pw);
+	     return sw.getBuffer().toString();
 	}
 }

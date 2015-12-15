@@ -13,20 +13,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="os_course_cat")
 public class CourseCategory implements Serializable
 {
+	public CourseCategory(){
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="PK_coc_course_id")
     private int courseId;
     @Column(name="coc_title")
+    @NotEmpty
     private String courseTitle ;
     @Column(name="coc_modify_date")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date courseModifyDate ;
     @Column(name="coc_status")
     private int status ;
@@ -38,11 +47,10 @@ public class CourseCategory implements Serializable
     @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL)
     private Set<SubjectCategory> subjectCategory;
     
-    public CourseCategory()
-    {
-    	
-    }
-
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL) 
+    private Set<CategoryClass> categoryClasses;
+    
 	public int getCourseId() {
 		return courseId;
 	}
@@ -89,6 +97,21 @@ public class CourseCategory implements Serializable
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public Set<SubjectCategory> getSubjectCategory() {
+		return subjectCategory;
+	}
+
+	public void setSubjectCategory(Set<SubjectCategory> subjectCategory) {
+		this.subjectCategory = subjectCategory;
+	}
+
+	public Set<CategoryClass> getCategoryClasses() {
+		return categoryClasses;
+	}
+
+	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
+		this.categoryClasses = categoryClasses;
 	}
     
     

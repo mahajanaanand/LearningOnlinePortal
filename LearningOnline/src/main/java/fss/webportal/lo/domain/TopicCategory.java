@@ -2,26 +2,45 @@ package fss.webportal.lo.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="os_topic_cat")
 public class TopicCategory implements Serializable
 {
+    public TopicCategory() {
+	}
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PK_toc_topic_id")
 	private int topicId;
 	@Column(name="toc_title")
+	@NotEmpty
 	private String topicTitle;
 	@Column(name="toc_modify_date")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date topicModifyDate;
 	@Column(name="toc_status")
 	private int status;
@@ -29,11 +48,17 @@ public class TopicCategory implements Serializable
 	private int flag;
 	@Column(name="toc_remark")
 	private String remark;
+	@ManyToOne
+	@JoinTable(name="os_chapter_topic",  
+	joinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chpter_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_topic_id",referencedColumnName="PK_toc_topic_id")}) 
+	private ChapterCategory chapterCategory;
 	
-	public TopicCategory() {
-		
-	}
-
+	@JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="topicCategory", cascade=CascadeType.ALL) 
+    private Set<CategoryClass> categoryClasses;
+	
+	
 	public int getTopicId() {
 		return topicId;
 	}
@@ -81,6 +106,24 @@ public class TopicCategory implements Serializable
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public ChapterCategory getChapterCategory() {
+		return chapterCategory;
+	}
+
+	public void setChapterCategory(ChapterCategory chapterCategory) {
+		this.chapterCategory = chapterCategory;
+	}
+
+	public Set<CategoryClass> getCategoryClasses() {
+		return categoryClasses;
+	}
+
+	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
+		this.categoryClasses = categoryClasses;
+	}
+	
+	
 	
 
 }

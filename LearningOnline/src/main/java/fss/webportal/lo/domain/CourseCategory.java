@@ -2,17 +2,26 @@ package fss.webportal.lo.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 @Entity
 @Table(name="os_course_cat")
 public class CourseCategory implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="PK_coc_course_id")
     private int courseId;
     @Column(name="coc_title")
@@ -25,6 +34,9 @@ public class CourseCategory implements Serializable
     private int flag ;
     @Column(name="coc_remark")
     private String remark ;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL)
+    private Set<SubjectCategory> subjectCategory;
     
     public CourseCategory()
     {

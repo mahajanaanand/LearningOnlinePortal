@@ -5,7 +5,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +19,7 @@ public class SubjectCategory implements Serializable
 
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PK_suc_subject_id")
 	private int subjectId;
 	@Column(name="suc_title")
@@ -27,6 +32,9 @@ public class SubjectCategory implements Serializable
 	private int flag;
 	@Column(name="suc_remark")
 	private String remark;
+	@ManyToOne
+	
+	private CourseCategory courseCategory;
 	
 	public SubjectCategory(){
 		

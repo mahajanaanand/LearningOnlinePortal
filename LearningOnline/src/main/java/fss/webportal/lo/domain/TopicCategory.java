@@ -11,51 +11,51 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="os_chapter_cat")
-public class ChapterCategory implements Serializable
+@Table(name="os_topic_cat")
+public class TopicCategory implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="PK_chc_chpter_id")
-	private int chapterId;
-	@Column(name="chc_title")
-	private String chapterTitle;
-	@Column(name="chc_modify_date")
-	private Date chapterModifyDate;
-	@Column(name="chc_status")
+	@Column(name="PK_toc_topic_id")
+	private int topicId;
+	@Column(name="toc_title")
+	private String topicTitle;
+	@Column(name="toc_modify_date")
+	private Date topicModifyDate;
+	@Column(name="toc_status")
 	private int status;
-	@Column(name="chc_flag")
+	@Column(name="toc_flag")
 	private int flag;
-	@Column(name="chc_remark")
+	@Column(name="toc_remark")
 	private String remark;
 	
-	public ChapterCategory(){
+	public TopicCategory() {
 		
 	}
 
-	public int getChapterId() {
-		return chapterId;
+	public int getTopicId() {
+		return topicId;
 	}
 
-	public void setChapterId(int chapterId) {
-		this.chapterId = chapterId;
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
 	}
 
-	public String getChapterTitle() {
-		return chapterTitle;
+	public String getTopicTitle() {
+		return topicTitle;
 	}
 
-	public void setChapterTitle(String chapterTitle) {
-		this.chapterTitle = chapterTitle;
+	public void setTopicTitle(String topicTitle) {
+		this.topicTitle = topicTitle;
 	}
 
-	public Date getChapterModifyDate() {
-		return chapterModifyDate;
+	public Date getTopicModifyDate() {
+		return topicModifyDate;
 	}
 
-	public void setChapterModifyDate(Date chapterModifyDate) {
-		this.chapterModifyDate = chapterModifyDate;
+	public void setTopicModifyDate(Date topicModifyDate) {
+		this.topicModifyDate = topicModifyDate;
 	}
 
 	public int getStatus() {
@@ -81,12 +81,6 @@ public class ChapterCategory implements Serializable
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
-	
-	
-	
-	
-	
 	
 
 }

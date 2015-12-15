@@ -50,14 +50,9 @@ public class TopicCategory implements Serializable
 	private String remark;
 	@ManyToOne
 	@JoinTable(name="os_chapter_topic",  
-	joinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chpter_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_topic_id",referencedColumnName="PK_toc_topic_id")}) 
+	joinColumns={@JoinColumn(name="FK_topic_id",referencedColumnName="PK_toc_topic_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chapter_id")}) 
 	private ChapterCategory chapterCategory;
-	
-	@JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="topicCategory", cascade=CascadeType.ALL) 
-    private Set<CategoryClass> categoryClasses;
-	
 	
 	public int getTopicId() {
 		return topicId;
@@ -114,16 +109,5 @@ public class TopicCategory implements Serializable
 	public void setChapterCategory(ChapterCategory chapterCategory) {
 		this.chapterCategory = chapterCategory;
 	}
-
-	public Set<CategoryClass> getCategoryClasses() {
-		return categoryClasses;
-	}
-
-	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
-		this.categoryClasses = categoryClasses;
-	}
-	
-	
-	
 
 }

@@ -85,14 +85,42 @@ public class MemberInfo implements Serializable
 	@OneToOne(fetch = FetchType.LAZY,mappedBy="memberinfo", cascade=CascadeType.ALL)
 	private MemberLogin memberlogin;
 	
-	@ManyToOne
-	@JoinTable(name="os_qfeed_submission_info",  
-	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_qfeed_id",referencedColumnName="PK_qs_qfeed_id")})
-	private QFeedSubmission qfeedsubmission;
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmissionMenber", cascade=javax.persistence.CascadeType.ALL) 
+	private Set<QFeedSubmission> qFeedSubmissions;
+			
+	public Set<EducationInfo> getEducationInfo() {
+		return educationInfo;
+	}
+
+	public void setEducationInfo(Set<EducationInfo> educationInfo) {
+		this.educationInfo = educationInfo;
+	}
+
+	public Set<OccupationInfo> getOccupationinfo() {
+		return occupationinfo;
+	}
+
+	public void setOccupationinfo(Set<OccupationInfo> occupationinfo) {
+		this.occupationinfo = occupationinfo;
+	}
+
+	public Set<MemberRole> getMemberrole() {
+		return memberrole;
+	}
+
+	public void setMemberrole(Set<MemberRole> memberrole) {
+		this.memberrole = memberrole;
+	}
+
+	public MemberLogin getMemberlogin() {
+		return memberlogin;
+	}
+
+	public void setMemberlogin(MemberLogin memberlogin) {
+		this.memberlogin = memberlogin;
+	}
 	
-	
-		
 	public int getMemberId() 
 	{
 		return memberId;
@@ -254,4 +282,12 @@ public class MemberInfo implements Serializable
 		this.remark = remark;
 	}
 
+	public Set<QFeedSubmission> getqFeedSubmissions() {
+		return qFeedSubmissions;
+	}
+
+	public void setqFeedSubmissions(Set<QFeedSubmission> qFeedSubmissions) {
+		this.qFeedSubmissions = qFeedSubmissions;
+	}
+	
 }

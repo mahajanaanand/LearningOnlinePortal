@@ -3,6 +3,9 @@
 <%@include file="/resources/static/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<style>
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,47 +18,46 @@
            <div class="container">
                 <div class="col-md-6 leftbar"><h2>Start learning from</br> real peoples</h2>
                     <div class="tbut1" style="width:250px; float:left; margin-top:60px;">
-	            <a href="preAccessLogin.html">JOIN FOR FREE</a>
-	            <span class="tag-line">Easy & Free</span>    
-	        </div>
+			            <a href="preAccessLogin.html">JOIN FOR FREE</a>
+			            <span class="tag-line">Easy & Free</span>    
+			        </div>
                 </div>
-            <div class="col-md-4 col-md-offset-8 hregform">
-            <div class="register-now-heading">not a member yet register now</div>	
-            <div class="">
-                    <fieldset>
-                        <div class="form-group">
-                            <span class="lab reg-name"></span>
-							<input class="form-control input-lg" placeholder="Name" name="Name" type="text">
-                        </div>
-						<div class="form-group">
-                            <span class="lab reg-mobile"></span>
-							<input class="form-control input-lg" placeholder="Mobile" name="Name" type="text">
-                        </div>
-						<div class="form-group">
-                            <span class="lab reg-email"></span>
-							<input class="form-control input-lg" placeholder="Email" name="Name" type="text">
-                        </div>
-						<div class="form-group">
-                            <span class="lab reg-dob"></span>
-							<input class="form-control input-lg" placeholder="Date of Birth" name="Name" type="text">
-                        </div>
-                       <div class="form-group">
-						   <span class="lab reg-sex"></span>
-                            <div class="select-control" id="reg-gender">Gender</div>
-						   	<div  class="select-list clear-both" id="select-list-reg-gender">
-						   		<ul id="gender">
-									<li>Male</li>
-									<li>Female</li>
-								</ul>
-						   	</div>
-                        </div>
-						<div class="form-group btn-reg-con">REGISTER NOW</div>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-    </div>
-        </div>       
+	            <div class="col-md-4 col-md-offset-8 hregform">
+	            	<div class="register-now-heading">not a member yet register now</div>	
+		            <div class="">
+		                    <fieldset>
+		                        <div class="form-group">
+		                            <span class="lab reg-name"></span>
+									<input class="form-control input-lg" placeholder="Name" name="Name" type="text">
+		                        </div>
+								<div class="form-group">
+		                            <span class="lab reg-mobile"></span>
+									<input class="form-control input-lg" placeholder="Mobile" name="Name" type="text">
+		                        </div>
+								<div class="form-group">
+		                            <span class="lab reg-email"></span>
+									<input class="form-control input-lg" placeholder="Email" name="Name" type="text">
+		                        </div>
+								<div class="form-group">
+		                            <span class="lab reg-dob"></span>
+									<input class="form-control input-lg" placeholder="Date of Birth" name="Name" type="text" id="dob">
+		                        </div>
+		                       <div class="form-group">
+								   <span class="lab reg-sex"></span>
+		                            <div class="select-control" id="reg-gender">Gender</div>
+								   	<div  class="select-list clear-both" id="select-list-reg-gender">
+								   		<ul id="gender">
+											<li>Male</li>
+											<li>Female</li>
+										</ul>
+								   	</div>
+		                        </div>
+								<div class="form-group btn-reg-con">REGISTER NOW</div>
+		                    </fieldset>
+		              </div>
+	            </div>
+        	</div>
+    	</div>     
     </section>
 
     <section id="conatcat-info">
@@ -194,6 +196,10 @@
 				 var ul_id=$(this).closest("ul").attr("id");
 				 $("#"+ul_id).find(".active-li").removeClass("active-li");
 				 $(this).addClass("active-li");
+			 });
+			 $("#dob").datepicker({
+				  altFormat: "dd-mm-yyyy",
+			 		inline:true
 			 });
 		 });
 	</script>

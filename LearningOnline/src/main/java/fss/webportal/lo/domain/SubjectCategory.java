@@ -51,17 +51,13 @@ public class SubjectCategory implements Serializable
 	
 	@ManyToOne
 	@JoinTable(name="os_course_subject",  
-	joinColumns={@JoinColumn(name="FK_course_id",referencedColumnName="PK_coc_course_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_subject_id",referencedColumnName="PK_suc_subject_id")}) 
+	joinColumns={@JoinColumn(name="FK_subject_id",referencedColumnName="PK_suc_subject_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_course_id",referencedColumnName="PK_coc_course_id")}) 
 	private CourseCategory courseCategory;
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="subjectCategory", cascade=CascadeType.ALL)
 	private Set<ChapterCategory> chapterCategory;
-	
-	@JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="subjectCategory", cascade=CascadeType.ALL) 
-    private Set<CategoryClass> categoryClasses;
 	
 	public int getSubjectId() {
 		return subjectId;
@@ -126,21 +122,4 @@ public class SubjectCategory implements Serializable
 	public void setChapterCategory(Set<ChapterCategory> chapterCategory) {
 		this.chapterCategory = chapterCategory;
 	}
-
-	public Set<CategoryClass> getCategoryClasses() {
-		return categoryClasses;
-	}
-
-	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
-		this.categoryClasses = categoryClasses;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

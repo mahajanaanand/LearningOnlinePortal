@@ -1,5 +1,7 @@
 package fss.webportal.lo.domain;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,11 +42,10 @@ public class CategoryClass
 	@ManyToOne
 	@JoinColumn(name="FK_topic_id")
 	private TopicCategory topicCategory;
-	
+		
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmission", cascade=javax.persistence.CascadeType.ALL)
-	private QFeedSubmission qfeedsubmission;
-	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryclassQFeed", cascade=javax.persistence.CascadeType.ALL)
+	private Set<QFeedSubmission> qfeedSubmissionCategory;
 	
 	
 	public int getCategoryClassId() {
@@ -103,6 +104,14 @@ public class CategoryClass
 		this.topicCategory = topicCategory;
 	}
 
+	public Set<QFeedSubmission> getQfeedSubmissionCategory() {
+		return qfeedSubmissionCategory;
+	}
+
+	public void setQfeedSubmissionCategory(
+			Set<QFeedSubmission> qfeedSubmissionCategory) {
+		this.qfeedSubmissionCategory = qfeedSubmissionCategory;
+	}
 	
 
 }

@@ -47,11 +47,7 @@ public class CourseCategory implements Serializable
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL)
     private Set<SubjectCategory> subjectCategory;
-    
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL) 
-    private Set<CategoryClass> categoryClasses;
-    
+ 
 	public int getCourseId() {
 		return courseId;
 	}
@@ -106,17 +102,4 @@ public class CourseCategory implements Serializable
 	public void setSubjectCategory(Set<SubjectCategory> subjectCategory) {
 		this.subjectCategory = subjectCategory;
 	}
-
-	public Set<CategoryClass> getCategoryClasses() {
-		return categoryClasses;
-	}
-
-	public void setCategoryClasses(Set<CategoryClass> categoryClasses) {
-		this.categoryClasses = categoryClasses;
-	}
-    
-    
-	
-	
-
 }

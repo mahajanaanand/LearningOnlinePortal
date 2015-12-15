@@ -32,8 +32,8 @@ public class MemberRole implements Serializable
 	
 	@ManyToOne
 	@JoinTable(name="os_member_loin_role",  
-	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
-	inverseJoinColumns={@JoinColumn(name="FK_role_id",referencedColumnName="PK_mr_role_id")})
+	joinColumns={@JoinColumn(name="FK_role_id",referencedColumnName="PK_mr_role_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
 	private MemberInfo memberinfo;
 	
 	

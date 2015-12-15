@@ -85,7 +85,7 @@ public class ApplicationController{
 			model.addObject("msg",MESSAGE_LOGOUT);
 		}
 		//model.addObject("preAccessLogin",);
-		model.setViewName("login");
+		model.setViewName("111111/preAccessLogin");
 		return model;
 
 	}

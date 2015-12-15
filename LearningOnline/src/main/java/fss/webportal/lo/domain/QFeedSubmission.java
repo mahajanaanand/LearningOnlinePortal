@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,13 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -58,17 +55,25 @@ public class QFeedSubmission implements Serializable
 	@Column(name="FK_subject_id")
 	private int subjectId;
 	
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="qfeedsubmission", cascade=javax.persistence.CascadeType.ALL) 
-	private Set<MemberInfo> memberinfo;
+	@ManyToOne
+	@JoinTable(name="os_qfeed_submission_info",  
+	joinColumns={@JoinColumn(name="FK_qfeed_id",referencedColumnName="PK_qs_qfeed_id")},  
+	inverseJoinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")})
+	private MemberInfo qfeedsubmissionMenber;
 	
-	
+	public CategoryClass getCategoryclassQFeed() {
+		return categoryclassQFeed;
+	}
+
+	public void setCategoryclassQFeed(CategoryClass categoryclassQFeed) {
+		this.categoryclassQFeed = categoryclassQFeed;
+	}
 	
 	@ManyToOne
 	@JoinTable(name="os_category_class_qfeed",  
 	joinColumns={@JoinColumn(name="FK_qfeed_id",referencedColumnName="PK_qs_qfeed_id")},  
 	inverseJoinColumns={@JoinColumn(name="FK_category_class_id",referencedColumnName="PK_category_class_id")})
-	private Set<CategoryClass> categoryclass;
+	private CategoryClass categoryclassQFeed;
 	
 	public int getQfeedId() {
 		return qfeedId;
@@ -163,5 +168,12 @@ public class QFeedSubmission implements Serializable
 		return serialVersionUID;
 	}
 
+	public MemberInfo getQfeedsubmissionMenber() {
+		return qfeedsubmissionMenber;
+	}
+
+	public void setQfeedsubmissionMenber(MemberInfo qfeedsubmissionMenber) {
+		this.qfeedsubmissionMenber = qfeedsubmissionMenber;
+	}
 	
 }

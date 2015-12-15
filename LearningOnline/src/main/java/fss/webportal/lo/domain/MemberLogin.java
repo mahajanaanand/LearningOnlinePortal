@@ -22,6 +22,7 @@ public class MemberLogin implements Serializable
 	{
 		
 	}
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="PK_mi_member_id")

@@ -21,6 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_occupation_info")
 public class OccupationInfo implements Serializable
 {
+	
 	public OccupationInfo()
 	{
 		

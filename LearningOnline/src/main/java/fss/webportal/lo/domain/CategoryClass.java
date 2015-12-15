@@ -17,6 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name="os_category_class")
 public class CategoryClass 
 {	
+	
 	public CategoryClass(){
 	}
 	@Id

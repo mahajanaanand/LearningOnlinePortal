@@ -23,6 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_course_cat")
 public class CourseCategory implements Serializable
 {
+	
 	public CourseCategory(){
     }
     private static final long serialVersionUID = 1L;

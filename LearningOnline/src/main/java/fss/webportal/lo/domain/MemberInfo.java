@@ -33,7 +33,7 @@ public class MemberInfo implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int memberId;
 	@Column(name="mi_member_id_manual")
-	private int memberIdManual=5;
+	private int memberIdManual=6;
 	@Column(name="mi_name")
 	private String memberName;
 	@Column(name="mi_address")
@@ -53,11 +53,7 @@ public class MemberInfo implements Serializable
 	@Column(name="mi_city")
 	private String city="indore";
 	@Column(name="mi_mobile")
-<<<<<<< HEAD
 	private String memberMobile;
-=======
-	private int memberMobile;
->>>>>>> refs/remotes/origin/master_anand
 	@Column(name="mi_security_number")
 	private int memberSecurityNumber;
 	@DateTimeFormat(pattern="dd/mm/yyyy")
@@ -96,6 +92,14 @@ public class MemberInfo implements Serializable
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfoNoti")
 	private Set<GroupNotification> groupNotifications;
+	
+	public String getMemberMobile() {
+		return memberMobile;
+	}
+
+	public void setMemberMobile(String memberMobile) {
+		this.memberMobile = memberMobile;
+	}
 
 	public int getMemberId() {
 		return memberId;
@@ -121,7 +125,6 @@ public class MemberInfo implements Serializable
 		this.memberName = memberName;
 	}
 
-<<<<<<< HEAD
 	public String getMemberAddress() {
 		return memberAddress;
 	}
@@ -129,69 +132,7 @@ public class MemberInfo implements Serializable
 	public void setMemberAddress(String memberAddress) {
 		this.memberAddress = memberAddress;
 	}
-	public int getMemberGender() {
-		return memberGender;
-	}
-
-	public void setMemberGender(int memberGender) {
-		this.memberGender = memberGender;
-	}
-
-	public String getMemberEmail() {
-		return memberEmail;
-	}
-
-	public void setMemberEmail(String memberEmail) {
-		this.memberEmail = memberEmail;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getMemberMobile() {
-		return memberMobile;
-	}
-
-	public void setMemberMobile(String memberMobile) {
-		this.memberMobile = memberMobile;
-	}
-
-	public int getMemberSecurityNumber() {
-		return memberSecurityNumber;
-	}
-
-	public void setMemberSecurityNumber(int memberSecurityNumber) {
-		this.memberSecurityNumber = memberSecurityNumber;
-	}
+	
 
 	public Date getMemberRegisterDate() {
 		return memberRegisterDate;
@@ -199,15 +140,7 @@ public class MemberInfo implements Serializable
 
 	public void setMemberRegisterDate(Date memberRegisterDate) {
 		this.memberRegisterDate = memberRegisterDate;
-=======
-	public String getAddress() {
-		return address;
 	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public int getMemberGender() {
 		return memberGender;
 	}
@@ -256,29 +189,13 @@ public class MemberInfo implements Serializable
 		this.city = city;
 	}
 
-	public int getMemberMobile() {
-		return memberMobile;
-	}
-
-	public void setMemberMobile(int memberMobile) {
-		this.memberMobile = memberMobile;
-	}
-
+	
 	public int getMemberSecurityNumber() {
 		return memberSecurityNumber;
 	}
 
 	public void setMemberSecurityNumber(int memberSecurityNumber) {
 		this.memberSecurityNumber = memberSecurityNumber;
-	}
-
-	public Date getRegisterDate() {
-		return registerDate;
-	}
-
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
->>>>>>> refs/remotes/origin/master_anand
 	}
 
 	public int getAccountStatus() {
@@ -360,10 +277,5 @@ public class MemberInfo implements Serializable
 	public void setGroupNotifications(Set<GroupNotification> groupNotifications) {
 		this.groupNotifications = groupNotifications;
 	}
-<<<<<<< HEAD
-	
-	
-	
-=======
->>>>>>> refs/remotes/origin/master_anand
+
 }

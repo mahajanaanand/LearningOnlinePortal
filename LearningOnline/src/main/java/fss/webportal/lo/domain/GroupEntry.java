@@ -15,11 +15,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -78,9 +82,15 @@ public class GroupEntry implements Serializable{
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "groupEntryNoti")
 	private Set<GroupNotification> groupNotifications;
-
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "eroupentry")
+	private Set<MCQTest> mcqTest;
+	
+	
+	
 	public GroupEntry() {
-		super();
+	super();
 	}
 
 	public int getGroupId() {

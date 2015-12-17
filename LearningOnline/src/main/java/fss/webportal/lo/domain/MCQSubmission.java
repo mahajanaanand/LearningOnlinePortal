@@ -2,12 +2,18 @@ package fss.webportal.lo.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,12 +44,10 @@ public class MCQSubmission implements Serializable
 	private String option4;
 	@Column(name="ms_answer")
 	private String answer;
-	
 	@DateTimeFormat(pattern="dd/mm/yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="ms_submit_date")
 	private Date submitDate;
-	
 	@Column(name="ms_explanation")
 	private String explanation;
 	@Column(name="ms_status")
@@ -52,6 +56,11 @@ public class MCQSubmission implements Serializable
 	private int flag;
 	@Column(name="ms_remark")
 	private String remark;
+	
+	@ManyToMany(fetch = FetchType.LAZY,mappedBy="mcqSubmissionMcqTest",cascade=CascadeType.ALL)
+	private Set<MCQTest> mcqTest;
+	
+	
 	
 	public int getMcqId() {
 		return mcqId;

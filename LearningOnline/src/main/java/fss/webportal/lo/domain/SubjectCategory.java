@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -59,6 +60,12 @@ public class SubjectCategory implements Serializable
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="subjectCategory", cascade=CascadeType.ALL)
 	private Set<ChapterCategory> chapterCategory;
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY,mappedBy="subjectCategoryMcqTest",cascade=CascadeType.ALL)
+	private Set<MCQTest> mcqTestSubjectCategory;
+	
+	
 	
 	public int getSubjectId() {
 		return subjectId;

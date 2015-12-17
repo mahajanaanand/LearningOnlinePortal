@@ -36,6 +36,10 @@ public class MemberLogin implements Serializable
 	private int memberId;
 	@Column(name="ml_password")
 	private String password;
+	
+	@Column(name="ml_email")
+	private String username;
+	
 	@Column(name="ml_status")
 	private int status;
 	@Column(name="ml_flag")
@@ -46,7 +50,7 @@ public class MemberLogin implements Serializable
 	private MemberInfo memberInfoLogin;
 	
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)  
-	@JoinTable(name="os_member_loin_role",  
+	@JoinTable(name="os_member_login_role",  
 	joinColumns={@JoinColumn(name="FK_member_id",referencedColumnName="PK_mi_member_id")},  
 	inverseJoinColumns={@JoinColumn(name="FK_role_id",referencedColumnName="PK_mr_role_id")})
 	private Set<MemberRole> memberRoles;
@@ -88,5 +92,12 @@ public class MemberLogin implements Serializable
 	public void setMemberRoles(Set<MemberRole> memberRoles) {
 		this.memberRoles = memberRoles;
 	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	
 }

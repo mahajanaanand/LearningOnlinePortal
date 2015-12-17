@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fss.webportal.lo.domain.MemberInfo;
+import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
+import fss.webportal.lo.service.ApplicationService;
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
@@ -41,6 +44,11 @@ public class ApplicationController{
 	@Value("${no_data_found}")
 	private String NO_DATA_FOUND;
 	
+	private final ApplicationService applicationService;
+	
+	@Autowired	
+	public ApplicationController(final ApplicationService applicationService) {super();this.applicationService = applicationService;}
+	
 	@RequestMapping(value="/redirectHome")
 	public ModelAndView redirectHome(){
 		
@@ -57,10 +65,6 @@ public class ApplicationController{
 	@RequestMapping(value="/redirectQATerminal")
 	public String redirectQATerminal(){
 		return "111112/qaHome";
-	}
-	@RequestMapping(value="/preAccessLogin")
-	public String preAccessLogin(){
-		return "111111/preAccessLogin";
 	}
 	@RequestMapping(value="/faqDetail")
 	public String faqDetail(){
@@ -89,7 +93,7 @@ public class ApplicationController{
 		if (logout != null) {
 			model.addObject("msg",MESSAGE_LOGOUT);
 		}
-		//model.addObject("preAccessLogin",);
+		model.addObject("memberLogin",new MemberLogin());
 		model.setViewName("111111/preAccessLogin");
 		return model;
 

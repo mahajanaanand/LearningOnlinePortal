@@ -18,8 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fss.webportal.lo.domain.MemberInfo;
+import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
+<<<<<<< HEAD
 import fss.webportal.lo.service.RegisterMemberService;
+=======
+import fss.webportal.lo.service.ApplicationService;
+>>>>>>> refs/remotes/origin/master_anand
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
@@ -43,6 +48,11 @@ public class ApplicationController{
 	@Value("${no_data_found}")
 	private String NO_DATA_FOUND;
 	
+	private final ApplicationService applicationService;
+	
+	@Autowired	
+	public ApplicationController(final ApplicationService applicationService) {super();this.applicationService = applicationService;}
+	
 	@RequestMapping(value="/redirectHome")
 	public ModelAndView redirectHome(){
 		
@@ -59,10 +69,6 @@ public class ApplicationController{
 	@RequestMapping(value="/redirectQATerminal")
 	public String redirectQATerminal(){
 		return "111112/qaHome";
-	}
-	@RequestMapping(value="/preAccessLogin")
-	public String preAccessLogin(){
-		return "111111/preAccessLogin";
 	}
 	@RequestMapping(value="/faqDetail")
 	public String faqDetail(){
@@ -91,7 +97,7 @@ public class ApplicationController{
 		if (logout != null) {
 			model.addObject("msg",MESSAGE_LOGOUT);
 		}
-		//model.addObject("preAccessLogin",);
+		model.addObject("memberLogin",new MemberLogin());
 		model.setViewName("111111/preAccessLogin");
 		return model;
 

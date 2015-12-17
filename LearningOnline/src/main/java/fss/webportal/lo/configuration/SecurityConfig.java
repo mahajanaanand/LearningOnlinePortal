@@ -1,12 +1,15 @@
 package fss.webportal.lo.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import fss.webportal.lo.classes.LoginSuccessHandler;
 
@@ -21,14 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	private final String EXPERT_ROOT="/betaVersion/002011/**";
 	private final String SECURE_ROOT="/betaVersion/SecureOnline/";
 	
-	/*@Autowired
+	@Autowired
 	private UserDetailsService userDetailsService;
 
 	@Override
     protected void configure(AuthenticationManagerBuilder registry) throws Exception	{
 		registry.userDetailsService(userDetailsService);
     }
-	*/
 	@Bean @Override
 	protected AuthenticationManager authenticationManager() throws Exception   {
 		return super.authenticationManager();

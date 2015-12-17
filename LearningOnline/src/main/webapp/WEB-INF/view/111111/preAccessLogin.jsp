@@ -3,6 +3,7 @@
 <%@include file="/resources/static/taglib.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,24 +15,28 @@
 			<div class="custom-heading left"><span>PRE-ACCESS SECURE LOGIN !</span></div>
 			<div class="top_first clear-both	">
 				<div class="left_login_container" id="customerLogin">
-					<div class="top_heading">ACCOUNT <span>LOGIN</span></div>
-					<div class="top_heading_sub">Existing Member: Login Below</div>
-					<div class="input_control">
-						<div class="title_inputbox">USER NAME<sup><span class="required">*</span></sup></div>
-						<div class="oe-input-box-container">
-							<input type="text" id="userName" class="oe-input-box" placeholder="Email Adderess"/></div>
-					</div>
-					<div class="input_control">
-						<div class="title_inputbox">SECURE PASSWORD<sup><span class="required">*</span></sup></div>
-						<div class="oe-input-box-container"><input type="text" id="password" class="oe-input-box" placeholder="Secure Password"></div>
-					</div>
-					<div class="title_inputbox">
-						<div class="input_text_box_panel" style="padding-top:28px;">
-							<a class="custom_button_blank login left margin-right font-normal">LOGIN CHECK</a>
-							<a class="font-normal" href="loginHelp" id="login_need_help">Need Help</a>
+					<form:form id="preAccessLogin" action="preAccessLogin.do" method="POST" modelAttribute="memberLogin">
+						<div class="top_heading">ACCOUNT <span>LOGIN</span></div>
+						<div class="top_heading_sub">Existing Member: Login Below</div>
+						<div class="input_control">
+							<div class="title_inputbox">USER NAME<sup><span class="required">*</span></sup></div>
+							<div class="oe-input-box-container">
+								<form:input path="username" id="userName" class="oe-input-box" placeholder="Email Adderess"></form:input>
+							</div>
 						</div>
-						
-					</div>
+						<div class="input_control">
+							<div class="title_inputbox">SECURE PASSWORD<sup><span class="required">*</span></sup></div>
+							<div class="oe-input-box-container">
+							<form:input path="password" id="userPass" class="oe-input-box" placeholder="Secure Password"></form:input>
+						</div>
+						</div>
+						<div class="title_inputbox">
+							<div class="input_text_box_panel" style="padding-top:28px;">
+								<a class="custom_button_blank login left margin-right font-normal" id="btn_secure_login">LOGIN CHECK</a>
+								<a class="font-normal" href="loginHelp" id="login_need_help">Need Help</a>
+							</div>
+						</div>
+					</form:form>
 				</div>
 				<div class="right_register_container" id="customerRegistration">
 					<div class="top_heading">New to <span>ObjectiveStudy</span></div>
@@ -153,6 +158,11 @@
 			$this.addClass("active").removeClass("feedback");
 		 });
     //	CHECK BOX END
+    	
+		$("#home_reg_dob").datepicker({ dateFormat: 'dd/mm/yy'});
+		$("#preAccessLogin").find("#btn_secure_login").on('click',function(){
+			$("#preAccessLogin").submit();
+		});
     });
     </script>
 </body>

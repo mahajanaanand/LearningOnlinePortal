@@ -29,8 +29,8 @@
                     	<form:form id="registerForm" action="registerStepOne" commandName="memberInfo">
                         <div class="form-group">
                             <span class="lab reg-name"></span>
-							<form:input path="memberInfo.memberName" class="form-control input-lg" placeholder="Name" name="Name" id="home_reg_name"/>
-							<form:errors path="memberName" cssClass="errors" element="div"/>
+							<form:input path="memberName" class="form-control input-lg" placeholder="Name" name="Name" id="home_reg_name"/>
+							<form:errors path="memberName" cssClass="error" element="div"/>
                         </div>
 						<div class="form-group">
                             <span class="lab reg-mobile"></span>
@@ -208,7 +208,7 @@
 				 $this.addClass("active-li");
 				$("#gender_option").val($this.attr("id"));
 			 });
-			 $("#dob").datepicker({ dateFormat: 'dd/mm/yy'});
+			 $("#home_reg_dob").datepicker({ dateFormat: 'dd/mm/yy'});
 			 $("#registerForm").find("#btn_home_register").on('click',function(){
 				 $("#registerForm").submit();
 			 });

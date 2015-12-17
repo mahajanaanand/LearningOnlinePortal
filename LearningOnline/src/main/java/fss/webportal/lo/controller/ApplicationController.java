@@ -5,13 +5,12 @@ import java.io.StringWriter;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.formWrapper.FormRegistration;
+import fss.webportal.lo.service.RegisterMemberService;
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
@@ -30,6 +30,8 @@ public class ApplicationController{
 	private final static String REQ_GP_REGISTER_TRYONCE="/registerTRYONCE";
 	private final static String VIEW_REGISTER_TRYONCE="registerTRYONCE";
 	private final static String REDIRECT_403="redirect:/static/403";
+	@Autowired
+	private RegisterMemberService registerService;
 	
 	
 	@Value("${logout}")
@@ -95,16 +97,13 @@ public class ApplicationController{
 
 	}
 	@RequestMapping(value="/registerStepOne")
-	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")@Valid MemberInfo memberInfo,BindingResult result){
-		System.out.println("Errors"+result.getErrorCount());
-		if(result.hasErrors()){
-			return new ModelAndView("111111/home","memberInfo",memberInfo);
-		}
-		else{
-			FormRegistration formRegistration=new FormRegistration();
-			formRegistration.setMemberInfo(memberInfo);
-			return new ModelAndView("memberProfile","formRegistration", formRegistration);	
-			}
+	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo){
+		
+		    MemberInfo memberInfoDb=registerService.saveMemberPersonalInfo(memberInfo);
+		    FormRegistration formRegistration=new FormRegistration();
+		   	formRegistration.setMemberInfo(memberInfoDb);
+			return new ModelAndView("111111/memberProfile","formRegistration", formRegistration);	
+			
 	}
 	private String getErrorMessage(HttpServletRequest request, String key) {
 		Exception exception = (Exception) request.getSession().getAttribute(key);

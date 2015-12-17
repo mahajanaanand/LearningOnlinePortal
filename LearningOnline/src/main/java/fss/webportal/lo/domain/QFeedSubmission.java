@@ -2,23 +2,19 @@ package fss.webportal.lo.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -105,7 +101,7 @@ public class QFeedSubmission implements Serializable
 	}
 
 	public void setNumberOfQuestion(int numberOfQuestion) {
-		numberOfQuestion = numberOfQuestion;
+		this.numberOfQuestion = numberOfQuestion;
 	}
 
 	public Date getSubmitDate() {

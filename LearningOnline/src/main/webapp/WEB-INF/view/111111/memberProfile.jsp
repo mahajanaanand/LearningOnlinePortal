@@ -11,27 +11,29 @@
         <div class="process_show-2">&nbsp;</div>    
             <div class="container contact-wrap clearfix"> 
                 <div class="inner-center-container">
+                   
                     <div class="cat-row-1">
+                    	 <form:form action="/abc" commandName="formRegistration" id="register_memberProfile">
                         <div class="custom-heading"><span>PERSONAL INFORMATION</span></div>
                         <div class="cat-col1-1 left" style="width:45%;">
                            <div class="input_text_box_panel">
                                 <div class="title_inputbox">FULL NAME<sup><span class="required">*</span></sup></div>
                                 <div class="oe-input-box-container-long">
-                                    <input class="oe-input-box-long" placeholder="Full Name" id="reg_fullName"/>
+                                    <form:input path="memberInfo.memberName" class="oe-input-box-long" placeholder="Full Name" id="reg_fullName"/>
                                 </div>
                                 <div class="input_box_bottom"><span class="eg_line"></span></div>
                             </div>
                             <div class="input_text_box_panel">
                                 <div class="title_inputbox">EMAIL<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="Email Address" id="reg_email"/>
+                                        <form:input path="memberInfo.memberEmail" class="oe-input-box-long" placeholder="Email Address" id="reg_email"/>
                                     </div>
                                 <span class="eg_line"></span>
                             </div>
                              <div class="input_text_box_panel">
                                 <div class="title_inputbox">MOBILE<sup><span class="required">*</span></sup></div>
                                 <div class="oe-input-box-container-long">
-                                    <input class="oe-input-box-long" placeholder="Mobile No." id="reg_mobile"/>
+                                    <form:input path="memberInfo.memberMobile" class="oe-input-box-long" placeholder="Mobile No." id="reg_mobile"/>
                                 </div>
                                 <span class="eg_line"></span>
                             </div>
@@ -59,7 +61,7 @@
                                     <div class="input_text_box_panel">
                                         <div class="title_inputbox">DOB<sup><span class="required">*</span></sup></div>
                                         <div class="oe-input-box-container">
-                                            <input class="oe-input-box" placeholder="Date of Birthday" id="reg_dob"/>
+                                            <form:input path="memberInfo.dateOfBirth" class="oe-input-box" placeholder="Date of Birthday" id="reg_dob"/>
                                         </div>
                                         <span class="eg_line"></span>
                                     </div>
@@ -70,55 +72,57 @@
                             <div class="input_text_box_panel">
                                 <div class="title_inputbox">COUNTRY<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="Country" id="reg_country"/>
+                                        <form:input path="memberInfo.country" class="oe-input-box-long" placeholder="Country" id="reg_country"/>
                                     </div>
                                     <span class="eg_line"></span>
                             </div>
                             <div class="input_text_box_panel">
                                 <div class="title_inputbox">STATE<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="State" id="reg_state"/>
+                                        <form:input path="memberInfo.state" class="oe-input-box-long" placeholder="State" id="reg_state"/>
                                     </div>
                                     <span class="eg_line"></span>
                             </div>
                             <div class="input_text_box_panel">
                                 <div class="title_inputbox">CITY<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="City" id="reg_city"/>
+                                        <form:input path="memberInfo.city" class="oe-input-box-long" placeholder="City" id="reg_city"/>
                                     </div>
                                     <span class="eg_line"></span>
                             </div>
                              <div class="input_text_box_panel">
                                <div class="title_inputbox">PERMANENT ADDRESS<sup><span class="required">*</span></sup></div>
                                 <div class="oe-textarea-container">
-                                   <textarea class="oe-textarea" placeholder="Permanent Address" id="reg_address"></textarea>
+                                   <form:textarea path="memberInfo.memberAddress" class="oe-textarea" placeholder="Permanent Address" id="reg_address"/>
                                 </div>
                                 <div class="input_box_bottom"><span class="eg_line"><span class="max_char" id="addressMaxChar">250</span></span></div>
                             </div>
                         </div>
+                       </form:form>
                     </div><!--/.row-->
                     <div class="cat-row-1">
+                    	<form:form id="registerMemberEducatoin" commandName="formRegistration">
                         <div class="custom-heading"><span>EDUCATIONAL INFORMATION</span></div>
                         <div class="cat-col1-1 left" style="width:45%;">
                             <div class="col-sm-5 left" style="width:526px;">
                                 <div class="input_text_box_panel">
                                     <div class="title_inputbox">QUALIFICATION<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="Qualification" id="reg_qualification"/>
+                                        <form:input path="educationInfo.qualification" class="oe-input-box-long" placeholder="Qualification" id="reg_qualification"/>
                                     </div>
                                     <span class="eg_line"></span>
                                 </div>
                                  <div class="input_text_box_panel">
                                     <div class="title_inputbox">SPECILIZATION<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="Specilization" id="reg_specilization"/>
+                                        <form:input path="educationInfo.specialization" class="oe-input-box-long" placeholder="Specilization" id="reg_specilization"/>
                                     </div>
                                     <span class="eg_line"></span>
                                 </div>
                                  <div class="input_text_box_panel">
                                     <div class="title_inputbox">UNIVERSITY<sup><span class="required">*</span></sup></div>
                                     <div class="oe-input-box-container-long">
-                                        <input class="oe-input-box-long" placeholder="University" id="reg_university"/>
+                                        <form:input path="educationInfo.university" class="oe-input-box-long" placeholder="University" id="reg_university"/>
                                     </div>
                                     <span class="eg_line"></span>
                                 </div>              
@@ -130,7 +134,7 @@
                                     <div class="input_text_box_panel">
                                         <div class="title_inputbox">DURATION FROM<sup><span class="required">*</span></sup></div>
                                         <div class="oe-input-box-container">
-                                            <input class="oe-input-box" placeholder="Date From" id="reg_dateFrom"/>
+                                            <form:input path="educationInfo.durationFrom" class="oe-input-box" placeholder="Date From" id="reg_dateFrom"/>
                                         </div>
                                         <span class="eg_line"></span>
                                     </div>
@@ -139,7 +143,7 @@
                                     <div class="input_text_box_panel">
                                         <div class="title_inputbox">TO<sup><span class="required">*</span></sup></div>
                                         <div class="oe-input-box-container">
-                                            <input class="oe-input-box" placeholder="Date To" id="reg_dateTo"/>
+                                            <form:input path="educationInfo.durationTo" class="oe-input-box" placeholder="Date To" id="reg_dateTo"/>
                                         </div>
                                         <span class="eg_line"></span>
                                     </div>
@@ -147,7 +151,7 @@
                                 <div class="input_text_box_panel">
                                    <div class="title_inputbox">REMARK<sup><span class="required"></span></sup></div>
                                     <div class="oe-textarea-container">
-                                       <textarea class="oe-textarea" placeholder="Remark" id="reg_remark"></textarea>
+                                       <form:textarea path="educationInfo.remark" class="oe-textarea" placeholder="Remark" id="reg_remark"/>
                                     </div>
                                     <div class="input_box_bottom"><span class="eg_line"><span class="max_char" id="remarkDescMaxChar">250</span></span></div>
                                 </div>
@@ -157,8 +161,11 @@
                                 <a class="custom_button_blank save left">SAVE RECORD</a>
                             </div>
                         </div>
+                        </form:form>
                     </div>        
+
                 </div>
+               </div>
                 <div class="mid_container">
                      <div class="table-responsive format-table-list">
                         <table cellpadding="10px;" border="1" id="test_list">
@@ -248,7 +255,7 @@
                             </div>
                             <div class="input_text_box_panel button-container">
                                  <a class="custom_button_blank upload left  margin-right" id="upload_occupation">UPLOAD CERTIFICATE</a>
-                                <a class="custom_button_blank save left">SAVE RECORD</a>
+                                <a class="custom_button_blank save left" id="btn_save_memberEducation">SAVE RECORD</a>
                             </div>
                         </div>
                     </div>
@@ -364,6 +371,31 @@
             $("#step2").fadeIn(300);
             $("#step3").hide();
         });
+         $("#register_memberProfile").find("#btn_save_memberProfile").on('click',function(){
+			 $("#register_memberProfile").submit();
+		 });
+         $("#reg_dateFrom").datepicker({ dateFormat: 'dd/mm/yy'});
+         $("#reg_dateTo").datepicker({ dateFormat: 'dd/mm/yy'});
+     	 function saveMemberEducation(){
+     		var educationInfo=$("#registerMemberEducatoin");
+     		$.ajax({
+     			url:'memberProfile',type:'GET',dataType:json,data:educationInfo.serialize(),
+     			successs:function(response){
+     				if(response.status=="SUCCESS"){
+     					var educationInfo=response.result[0];
+     				}
+     				else if(response.status=="UNSUCCESS"){
+     					alert("Proble in save to education");
+     				}
+     			},
+     			error:function(e){
+     				alert("error in process");
+     			}
+     			
+     		});
+     	}
+     	$("#registerMemberEducatoin").find("#btn_save_memberEducation").on('click',saveMemberEducation);
+
     </script>
 </body>
 </html>

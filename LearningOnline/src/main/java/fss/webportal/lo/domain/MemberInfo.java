@@ -33,7 +33,7 @@ public class MemberInfo implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int memberId;
 	@Column(name="mi_member_id_manual")
-	private int memberIdManual=6;
+	private int memberIdManual=7;
 	@Column(name="mi_name")
 	private String memberName;
 	@Column(name="mi_address")
@@ -93,13 +93,13 @@ public class MemberInfo implements Serializable
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfoNoti")
 	private Set<GroupNotification> groupNotifications;
 	
-	public String getMemberMobile() {
-		return memberMobile;
-	}
-
-	public void setMemberMobile(String memberMobile) {
-		this.memberMobile = memberMobile;
-	}
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="groupEntryMemberInfo", cascade=CascadeType.ALL) 
+	private Set<GroupEntry> groupentry;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfoQaquestion")
+	private Set<QAQuestion> qaQuestion;
 
 	public int getMemberId() {
 		return memberId;
@@ -132,15 +132,7 @@ public class MemberInfo implements Serializable
 	public void setMemberAddress(String memberAddress) {
 		this.memberAddress = memberAddress;
 	}
-	
 
-	public Date getMemberRegisterDate() {
-		return memberRegisterDate;
-	}
-
-	public void setMemberRegisterDate(Date memberRegisterDate) {
-		this.memberRegisterDate = memberRegisterDate;
-	}
 	public int getMemberGender() {
 		return memberGender;
 	}
@@ -189,13 +181,28 @@ public class MemberInfo implements Serializable
 		this.city = city;
 	}
 
-	
+	public String getMemberMobile() {
+		return memberMobile;
+	}
+
+	public void setMemberMobile(String memberMobile) {
+		this.memberMobile = memberMobile;
+	}
+
 	public int getMemberSecurityNumber() {
 		return memberSecurityNumber;
 	}
 
 	public void setMemberSecurityNumber(int memberSecurityNumber) {
 		this.memberSecurityNumber = memberSecurityNumber;
+	}
+
+	public Date getMemberRegisterDate() {
+		return memberRegisterDate;
+	}
+
+	public void setMemberRegisterDate(Date memberRegisterDate) {
+		this.memberRegisterDate = memberRegisterDate;
 	}
 
 	public int getAccountStatus() {
@@ -278,4 +285,21 @@ public class MemberInfo implements Serializable
 		this.groupNotifications = groupNotifications;
 	}
 
+	public Set<GroupEntry> getGroupentry() {
+		return groupentry;
+	}
+
+	public void setGroupentry(Set<GroupEntry> groupentry) {
+		this.groupentry = groupentry;
+	}
+
+	public Set<QAQuestion> getQaQuestion() {
+		return qaQuestion;
+	}
+
+	public void setQaQuestion(Set<QAQuestion> qaQuestion) {
+		this.qaQuestion = qaQuestion;
+	}
+	
+	
 }

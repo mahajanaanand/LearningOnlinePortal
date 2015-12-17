@@ -33,4 +33,9 @@ public class ApplicationServiceImpl implements ApplicationService
 		System.out.println("MemberInfo GET METHOD");
 		return memberLogin;
 	}
+
+	@Transactional
+	public MemberInfo saveMemberPersonalInfo(MemberInfo memberInfo) {
+		return memberInfoRepository.saveAndFlush(memberInfo);
+	}
 }

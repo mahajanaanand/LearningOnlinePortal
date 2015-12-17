@@ -122,4 +122,5 @@ public class GroupPostComment implements Serializable{
 			Set<GroupPostCommentReply> groupPostCommentReplies) {
 		this.groupPostCommentReplies = groupPostCommentReplies;
 	}
+	
 }

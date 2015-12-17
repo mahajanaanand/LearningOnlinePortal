@@ -20,11 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
-<<<<<<< HEAD
-import fss.webportal.lo.service.RegisterMemberService;
-=======
+
 import fss.webportal.lo.service.ApplicationService;
->>>>>>> refs/remotes/origin/master_anand
+
 
 @Controller
 @RequestMapping(value="/betaVersion/111111/")
@@ -35,8 +33,7 @@ public class ApplicationController{
 	private final static String REQ_GP_REGISTER_TRYONCE="/registerTRYONCE";
 	private final static String VIEW_REGISTER_TRYONCE="registerTRYONCE";
 	private final static String REDIRECT_403="redirect:/static/403";
-	@Autowired
-	private RegisterMemberService registerService;
+	
 	
 	
 	@Value("${logout}")
@@ -105,7 +102,7 @@ public class ApplicationController{
 	@RequestMapping(value="/registerStepOne")
 	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo){
 		
-		    MemberInfo memberInfoDb=registerService.saveMemberPersonalInfo(memberInfo);
+		    MemberInfo memberInfoDb=applicationService.saveMemberPersonalInfo(memberInfo);
 		    FormRegistration formRegistration=new FormRegistration();
 		   	formRegistration.setMemberInfo(memberInfoDb);
 			return new ModelAndView("111111/memberProfile","formRegistration", formRegistration);	

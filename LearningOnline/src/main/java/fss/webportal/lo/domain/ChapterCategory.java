@@ -123,5 +123,5 @@ public class ChapterCategory implements Serializable
 	public void setTopicCategory(Set<TopicCategory> topicCategory) {
 		this.topicCategory = topicCategory;
 	}
-
+	
 }

@@ -7,4 +7,5 @@ public interface ApplicationService {
 	
 	/*public MemberInfo findMemberInfoByMemberEmail(final String memberEmail);*/
 	public MemberLogin findByUserName(String username);
+	public MemberInfo saveMemberPersonalInfo(final MemberInfo memberInfo);
 }

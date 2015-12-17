@@ -32,15 +32,12 @@ public class GroupRequest implements Serializable{
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date groupRequestDate;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_group_id")
 	private GroupEntry groupEntry;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "FK_member_id")
 	private MemberInfo memberInfo;
-	
 	@Column(name="gr_request_type")
 	private int groupRequestType;
 	@Column(name="gr_status")
@@ -49,6 +46,7 @@ public class GroupRequest implements Serializable{
 	private int flag;
 	@Column(name="gr_remark")
 	private String remark;
+
 	
 	public GroupRequest() {
 		super();
@@ -107,6 +105,7 @@ public class GroupRequest implements Serializable{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+	
 	
 	
 }

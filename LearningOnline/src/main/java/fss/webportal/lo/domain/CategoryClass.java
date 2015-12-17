@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -50,7 +51,10 @@ public class CategoryClass
 	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryClass", cascade=CascadeType.ALL) 
-	private Set<GroupEntry> groupEntries; 
+	private Set<GroupEntry> groupEntries;
+	
+	@ManyToMany(fetch = FetchType.LAZY,mappedBy="categoryClassQaquestion",cascade=CascadeType.ALL)
+	private Set<QAQuestion> qaQuestion;
 	
 	public int getCategoryClassId() {
 		return categoryClassId;
@@ -123,6 +127,14 @@ public class CategoryClass
 
 	public void setGroupEntries(Set<GroupEntry> groupEntries) {
 		this.groupEntries = groupEntries;
+	}
+
+	public Set<QAQuestion> getQaQuestion() {
+		return qaQuestion;
+	}
+
+	public void setQaQuestion(Set<QAQuestion> qaQuestion) {
+		this.qaQuestion = qaQuestion;
 	}
 	
 }

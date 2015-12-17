@@ -163,6 +163,14 @@ public class EducationInfo implements Serializable
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public MemberInfo getMemberInfo() {
+		return memberInfo;
+	}
+
+	public void setMemberInfo(MemberInfo memberInfo) {
+		this.memberInfo = memberInfo;
+	}
 	
 	
 	

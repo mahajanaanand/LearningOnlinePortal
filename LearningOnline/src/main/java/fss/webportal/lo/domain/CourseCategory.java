@@ -103,4 +103,5 @@ public class CourseCategory implements Serializable
 	public void setSubjectCategory(Set<SubjectCategory> subjectCategory) {
 		this.subjectCategory = subjectCategory;
 	}
+	
 }

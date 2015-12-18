@@ -37,10 +37,19 @@ public class UserPrincipal
 				 String role=authority.getAuthority();
 				 System.out.println("ROLE : "+role);
 				 switch (role) {
-				case "EDITOR":
-						redirectUrl="020011/dashboard";	
+				case "ROLE_EDITOR":{
+					redirectUrl="/020011/dashboard";	
 					break;
-
+				}
+				case "ROLE_EXPERT":{
+					redirectUrl="/002011/dashboard";	
+					break;
+				}	
+				case "ROLE_STUDENT":{
+					redirectUrl="/000211/dashboard";	
+					break;
+				}	
+					
 				default:
 					break;
 				}

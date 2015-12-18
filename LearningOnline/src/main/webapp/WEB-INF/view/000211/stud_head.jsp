@@ -84,7 +84,7 @@
 								<li class="view-all"><a href="#">View More</a></li>	
 							</ul>
 						</li>
-						<li><a href="logout" id="top-logout" title="Logout">ANAND MAHAJAN</a></li>
+						<li><a href="${cdnAppRoot}/logout" id="top-logout" title="Logout">ANAND MAHAJAN</a></li>
                     </ul>
                    </div>
                 </nav>

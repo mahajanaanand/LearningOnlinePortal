@@ -31,14 +31,13 @@
                 </div>
 				
               <div class="collapse navbar-collapse navbar-right">
-                     <ul class="nav navbar-nav padding512">
-                        <li><a href="EXP_Upload_New_Qfeed.html">MY QFEED</a></li>
-						<li><a href="Group-Home_Front.html">GROUP ACTIVITY</a></li>
-                        <li><a href="QA_Home.html">QA TERMINAL</a></li>
+	              <ul class="nav navbar-nav padding512">
+		                <li><a href="EDT_Qestion_Feed_Penal.html">MY PANEL</a></li>
+						<li><a href="EDT_Qestion_Feed_Penal.html">QUESTION FEEDING</a></li>
 						<li><a href="Authentication_Manager.html">ACCOUNT SETTING</a></li>
-                    </ul>
-                </div>
-                                <nav class="menu">
+	              </ul>
+              </div>
+                <nav class="menu">
                    <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-sub">
                         <span class="sr-only">Toggle navigation</span>
@@ -84,7 +83,7 @@
 								<li class="view-all"><a href="#">View More</a></li>	
 							</ul>
 						</li>
-						<li><a href="logout" id="top-logout" title="Logout">ANAND MAHAJAN</a></li>
+						<li><a href="${cdnAppRoot}/logout" id="top-logout" title="Logout">ANAND MAHAJAN</a></li>
                     </ul>
                    </div>
                 </nav>

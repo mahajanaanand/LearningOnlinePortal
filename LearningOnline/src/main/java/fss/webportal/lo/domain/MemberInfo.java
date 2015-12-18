@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -33,7 +33,7 @@ public class MemberInfo implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int memberId;
 	@Column(name="mi_member_id_manual")
-	private int memberIdManual=7;
+	private int memberIdManual=8;
 	@Column(name="mi_name")
 	private String memberName;
 	@Column(name="mi_address")

@@ -18,7 +18,7 @@
 	<hibernate.version>4.2.11.Final</hibernate.version>
 	<c3p0.version>4.2.11.Final</c3p0.version>
 	<servletapi.version>2.5</servletapi.version>
-	<jackson.version>1.9.10</jackson.version>
+	<jackson.version>2.5.1</jackson.version>
 	<aspectj.version>1.7.2</aspectj.version>	
 </properties>
 <dependencies>
@@ -177,15 +177,22 @@
        </dependency>
 	<!-- JACKSON -->
 	<dependency>
-		<groupId>org.codehaus.jackson</groupId>
-		<artifactId>jackson-mapper-asl</artifactId>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
 		<version>${jackson.version}</version>
 	</dependency>
+
 	<dependency>
-		<groupId>org.codehaus.jackson</groupId>
-		<artifactId>jackson-core-asl</artifactId>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
 		<version>${jackson.version}</version>
-	</dependency>       
+	</dependency>
+  	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>${jackson.version}</version>
+	</dependency>
+  	
 	<!-- APACHE COMMONS FILE UPLOAD --> 
 	<dependency>
 		<groupId>commons-fileupload</groupId>

@@ -26,31 +26,7 @@ public class UserPrincipal
 		return login;
 	}
 	
-	@SuppressWarnings({"unchecked" })
-	public static String requestRedirectBasedOnRole(){
-		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-		String redirectUrl=null;
-		int len=authorities.size();
-		System.out.println("LEN : "+len);
-		if(len==1){
-			for (GrantedAuthority authority : authorities) {
-				 String role=authority.getAuthority();
-				 System.out.println("ROLE : "+role);
-				 switch (role) {
-				case "EDITOR":
-						redirectUrl="020011/dashboard";	
-					break;
 
-				default:
-					break;
-				}
-			}
-			
-		}else{
-			
-		}
-		return redirectUrl;
-	}
 	
 }
 

@@ -25,6 +25,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 				response.sendRedirect(savedReq.getRedirectUrl());
 			}else{
 				System.out.println("FOUTH");
+				System.out.println("APP ROOT : "+ApplicationUtility.getRequestApplicationRoot());
 				response.sendRedirect(ApplicationUtility.getRequestApplicationRoot()+""+UserPrincipal.requestRedirectBasedOnRole());
 			}
 		}else{

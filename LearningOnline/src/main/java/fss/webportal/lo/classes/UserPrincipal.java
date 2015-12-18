@@ -26,6 +26,7 @@ public class UserPrincipal
 		return login;
 	}
 	
+
 	@SuppressWarnings({"unchecked" })
 	public static String requestRedirectBasedOnRole(){
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)SecurityContextHolder.getContext().getAuthentication().getAuthorities();
@@ -37,29 +38,22 @@ public class UserPrincipal
 				 String role=authority.getAuthority();
 				 System.out.println("ROLE : "+role);
 				 switch (role) {
-				case "ROLE_EDITOR":{
-					redirectUrl="/020011/dashboard";	
-					break;
-				}
-				case "ROLE_EXPERT":{
-					redirectUrl="/002011/dashboard";	
-					break;
-				}	
-				case "ROLE_STUDENT":{
-					redirectUrl="/000211/dashboard";	
-					break;
-				}	
-					
-				default:
-					break;
-				}
+						case "ROLE_EDITOR":{
+							redirectUrl="/020011/dashboard";	
+							break;
+						}
+						case "ROLE_EXPERT":{
+							redirectUrl="/002011/dashboard";	
+							break;
+						}	
+						case "ROLE_STUDENT":{
+							redirectUrl="/000211/dashboard";	
+							break;
+						}
+				 }
 			}
-			
-		}else{
-			
 		}
-		return redirectUrl;
+	return redirectUrl;
 	}
 	
 }
-

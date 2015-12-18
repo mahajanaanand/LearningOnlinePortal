@@ -32,7 +32,7 @@ public class MemberInfo implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int memberId;
 	@Column(name="mi_member_id_manual")
-	private int memberIdManual=7;
+	private int memberIdManual=8;
 	@Column(name="mi_name")
 	private String memberName;
 	@Column(name="mi_address")

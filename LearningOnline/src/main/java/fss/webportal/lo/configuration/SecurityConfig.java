@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import fss.webportal.lo.classes.LoginSuccessHandler;
 
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter

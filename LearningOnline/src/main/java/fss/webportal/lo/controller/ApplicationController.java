@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import fss.webportal.lo.classes.ApplicationUtility;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
-
 import fss.webportal.lo.service.ApplicationService;
 
 
@@ -102,6 +102,11 @@ public class ApplicationController{
 	@RequestMapping(value="/registerStepOne")
 	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo){
 		
+		
+			int maxMemberId=applicationService.findMaxMemberId();
+			memberInfo.setMemberIdManual(000);
+			memberInfo.setMemberSecurityNumber(000);
+			
 		    MemberInfo memberInfoDb=applicationService.saveMemberPersonalInfo(memberInfo);
 		    FormRegistration formRegistration=new FormRegistration();
 		   	formRegistration.setMemberInfo(memberInfoDb);

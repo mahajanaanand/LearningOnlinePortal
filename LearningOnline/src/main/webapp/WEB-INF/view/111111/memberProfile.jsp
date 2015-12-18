@@ -371,16 +371,15 @@
             $("#step2").fadeIn(300);
             $("#step3").hide();
         });
-         $("#register_memberProfile").find("#btn_save_memberProfile").on('click',function(){
-			 $("#register_memberProfile").submit();
-		 });
+ 
          $("#reg_dateFrom").datepicker({ dateFormat: 'dd/mm/yy'});
          $("#reg_dateTo").datepicker({ dateFormat: 'dd/mm/yy'});
      	 function saveMemberEducation(){
-     		var educationInfo=$("#registerMemberEducatoin");
+     		alert("aadesh");
+     		 var educationInfo=$("#registerMemberEducatoin");
      		$.ajax({
      			url:'memberProfile',type:'GET',dataType:json,data:educationInfo.serialize(),
-     			successs:function(response){
+     			success:function(response){
      				if(response.status=="SUCCESS"){
      					var educationInfo=response.result[0];
      				}

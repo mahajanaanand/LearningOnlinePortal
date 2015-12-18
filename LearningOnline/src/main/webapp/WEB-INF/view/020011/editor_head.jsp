@@ -32,9 +32,9 @@
 				
               <div class="collapse navbar-collapse navbar-right">
 	              <ul class="nav navbar-nav padding512">
-		                <li><a href="EDT_Qestion_Feed_Penal.html">MY PANEL</a></li>
-						<li><a href="EDT_Qestion_Feed_Penal.html">QUESTION FEEDING</a></li>
-						<li><a href="Authentication_Manager.html">ACCOUNT SETTING</a></li>
+		                <li><a href="editorPanel">MY PANEL</a></li>
+						<li><a href="questionFeed">QUESTION FEEDING</a></li>
+						<li><a href="222200/authenticationManager">ACCOUNT SETTING</a></li>
 	              </ul>
               </div>
                 <nav class="menu">

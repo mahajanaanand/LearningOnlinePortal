@@ -62,7 +62,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	  		.formLogin()
 	  		.loginPage(COMMON_ROOT+"preAccessLogin")
 	  		.loginProcessingUrl(COMMON_ROOT+"preAccessLogin.do")
-	  		//.defaultSuccessUrl("/betaVersion/020011/dashboard")
 	  		.failureUrl(COMMON_ROOT+"preAccessLogin.do?error")
 	  		.successHandler(new LoginSuccessHandler())
 	  		.and()

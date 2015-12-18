@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
@@ -24,8 +24,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class CourseCategory implements Serializable
 {
 	
-	public CourseCategory(){
-    }
+	public CourseCategory(){}
+	
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

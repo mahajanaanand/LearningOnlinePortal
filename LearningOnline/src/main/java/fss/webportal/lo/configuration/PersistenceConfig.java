@@ -32,6 +32,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
@@ -168,5 +169,4 @@ public class PersistenceConfig extends WebMvcConfigurerAdapter{
 	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
 	    return new PropertySourcesPlaceholderConfigurer();
 	}
-	
 }

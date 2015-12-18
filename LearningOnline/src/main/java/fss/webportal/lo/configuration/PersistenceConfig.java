@@ -32,6 +32,8 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+import fss.webportal.lo.classes.ApplicationUtility;
+
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
@@ -61,7 +63,7 @@ public class PersistenceConfig extends WebMvcConfigurerAdapter{
 	
 	private final static String VIEW_PREFIX="/WEB-INF/view/";
 	private final static String VIEW_SUFFIX=".jsp";
-
+	
 	@Bean
 	public  DataSource dataSource() throws IllegalStateException, PropertyVetoException
 	{
@@ -168,5 +170,12 @@ public class PersistenceConfig extends WebMvcConfigurerAdapter{
 	public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
 	    return new PropertySourcesPlaceholderConfigurer();
 	}
+	
+	@Bean
+	public String setApplicationRoot() {
+		ApplicationUtility.setRequestApplicationRoot(environment.getRequiredProperty("cdn.applicationRoot"));
+	    return ApplicationUtility.getRequestApplicationRoot();
+	}
+
 	
 }

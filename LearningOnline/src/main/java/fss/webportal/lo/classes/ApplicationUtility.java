@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class ApplicationUtility {
 
+	private static String requestApplicationRoot;
 	public static int requestManualId(int suffix)	{
 		StringBuffer manualId=new StringBuffer();
 		try{
@@ -23,5 +24,20 @@ public class ApplicationUtility {
 	    int randomNum = rand.nextInt(range);
 	    return randomNum;
 	}
+	
+	public static String getRequestApplicationRoot() {
+		return requestApplicationRoot;
+	}
+	
+	public static void setRequestApplicationRoot(String requestApplicationRoot) {
+		ApplicationUtility.requestApplicationRoot = requestApplicationRoot;
+	}
 
+	
 }
+
+
+	
+
+	
+

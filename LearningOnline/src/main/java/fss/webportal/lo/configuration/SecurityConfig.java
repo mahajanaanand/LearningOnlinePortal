@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import fss.webportal.lo.classes.LoginSuccessHandler;
+
 
 
 @Configuration
@@ -60,11 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	  		.formLogin()
 	  		.loginPage(COMMON_ROOT+"preAccessLogin")
 	  		.loginProcessingUrl(COMMON_ROOT+"preAccessLogin.do")
-	  		.defaultSuccessUrl(SECURE_ROOT+"serviceAuthorizeAction" )
+	  		//.defaultSuccessUrl("/betaVersion/020011/dashboard")
 	  		.failureUrl(COMMON_ROOT+"preAccessLogin.do?error")
+	  		.successHandler(new LoginSuccessHandler())
 	  		.and()
 	  		.logout()
-	  		.logoutUrl(SECURE_ROOT+"logout")
+	  		.logoutUrl("/logout")
 	  		.logoutSuccessUrl(COMMON_ROOT+"preAccessLogin.do?logout")
 	  		.deleteCookies( "JSESSIONID" )
 	  		.invalidateHttpSession( true )

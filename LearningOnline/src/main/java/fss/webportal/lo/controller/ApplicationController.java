@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fss.webportal.lo.classes.ApplicationUtility;
+import fss.webportal.lo.classes.UserPrincipal;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
@@ -92,6 +93,7 @@ public class ApplicationController{
 			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
 		}
 		if (logout != null) {
+			UserPrincipal.setMenuAction("0");
 			model.addObject("msg",MESSAGE_LOGOUT);
 		}
 		model.addObject("memberLogin",new MemberLogin());

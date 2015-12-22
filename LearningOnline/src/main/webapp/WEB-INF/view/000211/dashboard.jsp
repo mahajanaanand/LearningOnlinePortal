@@ -52,7 +52,7 @@
                 <div class="right_column_dashboard_box margin-right-40">
 					<div class="top-container">
 						<div class="row row-margin0">
-							 <a href="STD_Test_List.html">
+							 <a href="${rootAction}/testList">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_red"> 
 										<div class="icon">
@@ -63,7 +63,7 @@
 									</div> 
 							</div>
 							</a>
-							 <a href="Notification.html">
+							 <a href="${applicationRoot}/222200/notification?action=notification">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_blue"> 
 										<div class="icon">
@@ -76,7 +76,7 @@
 							</a>
 						</div>
 						 <div class="row row-margin0">
-							  <a href="STD_Generate_Test.html">
+							  <a href="${applicationRoot}/000211/generateTest">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_yellow"> 
 										<div class="icon">
@@ -87,7 +87,7 @@
 									</div> 
 								 </div>
 							 </a>
-							  <a href="QA_Home.html">
+							  <a href="${applicationRoot}/111112/qaHome">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_black_blue"> 
 										<div class="icon">
@@ -100,7 +100,7 @@
 							 </a>
 						</div>
 						<div class="row row-margin0">
-							<a href="Authentication_Manager.html">
+							<a href="${applicationRoot}/222200/authenticationManager">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_green "> 
 										<div class="icon">
@@ -111,7 +111,7 @@
 									</div> 
 								 </div>
 							</a>
-							 <a href="Group-Home_Front.html">
+							 <a href="${applicationRoot}/111121/groupSelfFront">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_orange"> 
 										<div class="icon">

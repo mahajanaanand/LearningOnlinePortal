@@ -27,8 +27,9 @@
                                     <li class="sum-mcq-active" title="MCQ Approved"><span class="dym_count_exp_dash_value">1538</span></li>
                                     <li class="sum-que-posted" title="Question Asked By You"><span class="dym_count_exp_dash_value">2526</span></li>
 									<li class="sum-ans-posted" title="Answer Posted By You"><span class="dym_count_exp_dash_value">6352</span></li>
-									<li class="group_request" title="Group Created By You">My Own Groups<span class="dym_count_exp_dash_value"><a href="Group-Self_Front.html">(3)</a></span></li>
-									<li class="group_member" title="Friends Groups You Have Joined">Friend Groups<span class="dym_count_exp_dash_value"><a href="Group-Home_Front.html">(3)</a></span></li>								 <li class="group_member" title="Open Groups You Have Joined">Open Groups<span class="dym_count_exp_dash_value"><a href="Public_Groups_Home.html">(20)</a></span>
+									<li class="group_request" title="Group Created By You">My Own Groups<span class="dym_count_exp_dash_value"><a href="${applicationRoot}/111121/groupSelfFront">(3)</a></span></li>
+									<li class="group_member" title="Friends Groups You Have Joined">Friend Groups<span class="dym_count_exp_dash_value"><a href="${applicationRoot}/111121/groupSelfFront">(3)</a></span></li>								 
+									<li class="group_member" title="Open Groups You Have Joined">Open Groups<span class="dym_count_exp_dash_value"><a href="${applicationRoot}/111121/publicGroupsHome">(20)</a></span>
 									<li class="group_test_created no-border-bottom" title="Test Created By You	"><span class="dym_count_exp_dash_value"><a href="#">(45852)</a></span></li>
                                 </ul>
                             </div>
@@ -53,7 +54,7 @@
                 <div class="right_column_dashboard_box margin-right-40">
 					<div class="top-container">
 						<div class="row row-margin0">
-							 <a href="EXP_Upload_New_Qfeed.html">
+							 <a href="${rootAction}/qFeedUpload">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_red"> 
 										<div class="icon">
@@ -64,7 +65,7 @@
 									</div> 
 								</div>
 							</a>
-							 <a href="Notification.html">
+							 <a href="${applicationRoot}/222200/notification?action=notification">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_blue"> 
 										<div class="icon">
@@ -77,7 +78,7 @@
 							</a>
 						</div>
 						 <div class="row row-margin0">
-							  <a href="EXP_Generate_Test.html">
+							  <a href="${rootAction}/generateTest">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_yellow"> 
 										<div class="icon">
@@ -88,7 +89,7 @@
 									</div> 
 								 </div>
 							 </a>
-							  <a href="QA_Home.html">
+							  <a href="${applicationRoot}/111112/qaHome">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_black_blue"> 
 										<div class="icon">
@@ -101,7 +102,7 @@
 							 </a>
 						</div>
 						<div class="row row-margin0">
-							<a href="Authentication_Manager.html">
+							<a href="${applicationRoot}/222200/authenticationManager">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_green "> 
 										<div class="icon">
@@ -112,7 +113,7 @@
 									</div> 
 								 </div>
 							</a>
-							 <a href="Group-Home_Front.html">
+							 <a href="${applicationRoot}/111121/groupSelfFront">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_orange"> 
 										<div class="icon">

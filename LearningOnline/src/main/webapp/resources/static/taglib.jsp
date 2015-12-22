@@ -5,6 +5,7 @@
 
 <spring:eval expression="@environment.getRequiredProperty('cdn.static')" var="cdnStatic" />
 <spring:eval expression="@environment.getRequiredProperty('cdn.appRoot')" var="cdnAppRoot" />
+<spring:eval expression="@environment.getRequiredProperty('cdn.applicationRoot')" var="applicationRoot" />
 <%-- <spring:eval expression="@environment.getRequiredProperty('cdn.dynamicData')" var="cdnDynamicData" />
 
 <spring:eval expression="@environment.getRequiredProperty('cdn.secure')" var="cdnSecure" />

@@ -86,10 +86,10 @@
 	</dependency>
 	<!-- SPRING 4 ASPECTS -->
 	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-aspects</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
 	<!-- SPRING HIBERNATE ORM INTIGRATION -->
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -121,11 +121,6 @@
 	<dependency>
            <groupId>org.aspectj</groupId>
            <artifactId>aspectjweaver</artifactId>
-           <version>${aspectj.version}</version>
-       </dependency>
-       <dependency>
-           <groupId>org.aspectj</groupId>
-           <artifactId>aspectjrt</artifactId>
            <version>${aspectj.version}</version>
        </dependency>
 	<!-- MYSQL -->

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.SavedRequest;
@@ -18,18 +17,22 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		HttpSession session = request.getSession();
 		System.out.println("FIRST");
 		if (session != null) {
-			System.out.println("SECOND");
+			System.out.println("SESSION IF");
+			System.out.println("ACTION LOGIN: "+UserPrincipal.getMenuAction());
 			SavedRequest savedReq = (SavedRequest) session.getAttribute("SPRING_SECURITY_SAVED_REQUEST");
 			if(savedReq!=null){
-				System.out.println("THIRD");
+				System.out.println("SAVED IF");
+				System.out.println("ACTION LOGIN: "+UserPrincipal.getMenuAction());
 				response.sendRedirect(savedReq.getRedirectUrl());
 			}else{
-				System.out.println("FOUTH");
+				System.out.println("SAVED ELSE");
+				System.out.println("ACTION LOGIN: "+UserPrincipal.getMenuAction());
 				System.out.println("APP ROOT : "+ApplicationUtility.getRequestApplicationRoot());
 				response.sendRedirect(ApplicationUtility.getRequestApplicationRoot()+""+UserPrincipal.requestRedirectBasedOnRole());
 			}
 		}else{
-			System.out.println("FIVE");
+			System.out.println("SESSION ELSE");
+			System.out.println("ACTION LOGIN: "+UserPrincipal.getMenuAction());
 			response.sendRedirect(ApplicationUtility.getRequestApplicationRoot()+"/111111/preAccessLogin");
 		}
 	}

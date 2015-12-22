@@ -1,10 +1,13 @@
 package fss.webportal.lo.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+
 @RequestMapping(value="/betaVersion/111112/")
+@PreAuthorize("hasAnyRole('ADMIN','EXPERT','STUDENT')")
 public class QATerminalController {
 
 	@RequestMapping(value="/askAQuestion")

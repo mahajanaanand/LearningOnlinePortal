@@ -1,18 +1,12 @@
 package fss.webportal.lo.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-
-
-
-
-
-
-
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -21,6 +15,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.stereotype.Repository;
 
+import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
 
 @Repository
@@ -38,4 +33,11 @@ public class ApplicationDAOImpl implements ApplicationDAO{
 		System.out.println("LIST SIZE "+memberLogins.size());
 		return memberLogins.get(0);	
 	}
+	public int findMaxMemberId() {
+		
+	     Query query=em.createNativeQuery("select MAX(PK_mi_member_id) from os_member_info");
+	     int maxId=(Integer)query.getSingleResult();
+	     return maxId;
+	}
+	
 }

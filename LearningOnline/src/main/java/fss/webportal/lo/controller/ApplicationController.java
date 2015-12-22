@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import fss.webportal.lo.classes.JSONResponse;
+import fss.webportal.lo.classes.ApplicationUtility;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
 import fss.webportal.lo.formWrapper.FormRegistration;
@@ -36,7 +36,6 @@ public class ApplicationController{
 	private final static String REQ_GP_REGISTER_TRYONCE="/registerTRYONCE";
 	private final static String VIEW_REGISTER_TRYONCE="registerTRYONCE";
 	private final static String REDIRECT_403="redirect:/static/403";*/
-	
 	
 	
 	@Value("${logout}")
@@ -86,12 +85,13 @@ public class ApplicationController{
 	public String memberProfile(){
 		return "111111/memberProfile";
 	}
+
 	
-	
-	@RequestMapping(value="/getJsonTest", method= RequestMethod.GET)
+	/*@RequestMapping(value="redirectCategory", method= RequestMethod.GET)
 	public @ResponseBody JSONResponse getJsonTest(){
 		JSONResponse jsonResponse=new JSONResponse(); 
 		jsonResponse.setStatus("SUCCESS");
+		
 		List<Object> list=new ArrayList<Object>();
 		List<String> rowList=new ArrayList<String>();
 		rowList.add("BE");
@@ -105,11 +105,10 @@ public class ApplicationController{
 		rowList1.add("aug to sep");
 		rowList1.add("0");
 		list.add(rowList1);
-		
 		jsonResponse.setResult(list);
 		System.out.println("AJAX SUCCESS");
 		return jsonResponse;
-	}
+	}*/
 	
 
 	@RequestMapping(value = "/preAccessLogin", method = RequestMethod.GET)
@@ -129,13 +128,15 @@ public class ApplicationController{
 	}
 	@RequestMapping(value="/registerStepOne")
 	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo)
-	{
-		
+	{	
+			int maxMemberId=applicationService.findMaxMemberId();
+			memberInfo.setMemberIdManual(000);
+			memberInfo.setMemberSecurityNumber(000);
+			
 		    MemberInfo memberInfoDb=applicationService.saveMemberPersonalInfo(memberInfo);
 		    FormRegistration formRegistration=new FormRegistration();
 		   	formRegistration.setMemberInfo(memberInfoDb);
 			return new ModelAndView("111111/memberProfile","formRegistration", formRegistration);	
-			
 	}
 	private String getErrorMessage(HttpServletRequest request, String key) 
 	{

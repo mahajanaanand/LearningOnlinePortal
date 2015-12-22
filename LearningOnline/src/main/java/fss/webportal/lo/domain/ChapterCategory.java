@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,6 +51,12 @@ public class ChapterCategory implements Serializable
 	@Column(name="chc_remark")
 	private String remark;
 	
+	
+	public ChapterCategory(int chapterId) {
+		super();
+		this.chapterId = chapterId;
+	}
+
 	@ManyToOne
 	@JoinTable(name="os_subject_chapter",  
 	joinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chapter_id")}, 
@@ -122,6 +129,11 @@ public class ChapterCategory implements Serializable
 
 	public void setTopicCategory(Set<TopicCategory> topicCategory) {
 		this.topicCategory = topicCategory;
+	}
+	public void setCustomValue(Date courseModifyDate,String remark,int status){
+		this.remark = remark;
+		this.status=status;
+		this.chapterModifyDate=courseModifyDate;
 	}
 	
 }

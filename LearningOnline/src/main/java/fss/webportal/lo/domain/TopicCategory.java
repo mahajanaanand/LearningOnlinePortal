@@ -2,24 +2,21 @@ package fss.webportal.lo.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -54,6 +51,10 @@ public class TopicCategory implements Serializable
 	joinColumns={@JoinColumn(name="FK_topic_id",referencedColumnName="PK_toc_topic_id")},  
 	inverseJoinColumns={@JoinColumn(name="FK_chapter_id",referencedColumnName="PK_chc_chapter_id")}) 
 	private ChapterCategory chapterCategory;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_member_id")   
+	private MemberInfo memberInfo;
 	
 	public int getTopicId() {
 		return topicId;
@@ -110,5 +111,18 @@ public class TopicCategory implements Serializable
 	public void setChapterCategory(ChapterCategory chapterCategory) {
 		this.chapterCategory = chapterCategory;
 	}
+	public void setCustomValue(Date topicModifyDate,String remark,int status){
+		this.remark = remark;
+		this.status=status;
+		this.topicModifyDate=topicModifyDate;
+	}
 
+	public MemberInfo getMemberInfo() {
+		return memberInfo;
+	}
+
+	public void setMemberInfo(MemberInfo memberInfo) {
+		this.memberInfo = memberInfo;
+	}
+	
 }

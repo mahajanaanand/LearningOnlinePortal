@@ -18,7 +18,7 @@
 	<hibernate.version>4.2.11.Final</hibernate.version>
 	<c3p0.version>4.2.11.Final</c3p0.version>
 	<servletapi.version>2.5</servletapi.version>
-	<jackson.version>1.9.10</jackson.version>
+	<jackson.version>2.5.1</jackson.version>
 	<aspectj.version>1.7.2</aspectj.version>	
 </properties>
 <dependencies>

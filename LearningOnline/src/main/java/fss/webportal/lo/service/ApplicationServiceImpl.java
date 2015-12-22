@@ -38,4 +38,9 @@ public class ApplicationServiceImpl implements ApplicationService
 	public MemberInfo saveMemberPersonalInfo(MemberInfo memberInfo) {
 		return memberInfoRepository.saveAndFlush(memberInfo);
 	}
+	@Transactional
+	public int findMaxMemberId() {
+		
+		return applicationDAO.findMaxMemberId();
+	}
 }

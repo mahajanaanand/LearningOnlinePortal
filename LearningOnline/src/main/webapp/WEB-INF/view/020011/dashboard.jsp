@@ -44,7 +44,7 @@
                 <div class="right_column_dashboard_box margin-right-40">
 					<div class="top-container">
 						<div class="row row-margin0">
-							 <a href="EDT_Add_Category.html">
+							 <a href="addCategory">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_red"> 
 										<div class="icon">
@@ -55,7 +55,7 @@
 									</div> 
 								</div>
 							</a>
-							 <a href="EDT_Panel.html">
+							 <a href="editorPanel">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_light_blue"> 
 										<div class="icon">
@@ -79,7 +79,7 @@
 									</div> 
 								 </div>
 							 </a>
-							  <a href="EDT_Qestion_Feed_Penal.html">
+							  <a href="questionFeed">
 								<div class="dashboard_heading">  
 									<div class="tile-stats tile dashboard_block_black_blue"> 
 										<div class="icon">
@@ -92,6 +92,17 @@
 							 </a>
 						</div>
 						<div class="row row-margin0">
+							<a href="questionRevisionPenal">
+								<div class="dashboard_heading">  
+									<div class="tile-stats tile dashboard_block_black_blue"> 
+										<div class="icon">
+											<div class="entypo entypo_qa_terminal"></div>
+										</div> 
+										<div class="num">QUESTION REVISION</div>
+										<h3>Find question in database before feed</h3> 
+									</div> 
+								</div>
+							 </a>
 							 <a href="Authentication_Manager.html">
 									<div class="dashboard_heading">  
 										<div class="tile-stats tile dashboard_block_green "> 

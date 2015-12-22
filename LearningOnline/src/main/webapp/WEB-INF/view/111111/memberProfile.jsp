@@ -360,76 +360,32 @@
        	    $("#step2-3").on("click", function (){
             $("#step3").fadeIn(500);
             $("#step2").hide();
-        });
-            $("#step3-2").on("click", function (){
+        	});
+            
+       	    $("#step3-2").on("click", function (){
             $("#step2").fadeIn(300);
             $("#step3").hide();
-        });
-
+        	});
+            
          $("#reg_dateFrom").datepicker({ dateFormat: 'dd/mm/yy'});
          $("#reg_dateTo").datepicker({ dateFormat: 'dd/mm/yy'});
-         
-     	  function saveMemberEducation()
-     	  {
-     		
-     	  }
-     		$("#btn_save_memberEducation").on('click',function ()
-     			{
-     		$.ajax({url:'getJsonTest',type:'GET', dataType : 'json',
-     			success:function(response)
-     			{
-     				alert("process..");
-     				$("#test_list tbody").empty();
-     				var items=[];    				
-     				for(var i=0; i<response.result.length; i++)
-     					{
-     						var data=response.result[i];
-     						var td='';
-     						for(var j=0; j<data.length; j++)
-     						{
-     							td=td+"<td>"+""+data[j]+"</td>";	
-     						}
-     				
-     						items.push("<tr><td>"+i+"</td>"+td+"</tr>");
-     						$("#test_list tbody").append(items.join(''));
-     					}			
-     			},
+     	 
+         function saveMemberEducation(){
+     		 var educationInfo=$("#registerMemberEducatoin");
+     		$.ajax({
+     			url:'memberProfile',type:'GET',dataType:'json',data:educationInfo.serialize(),
+     			success:function(response){
+     				if(response.status=="SUCCESS"){
+     				}
+     				else if(response.status=="UNSUCCESS"){
+     					alert("Proble in save to education");
+     				}
+				},
      			error:function(e){
      			alert("error in process");
      			}
      		});
-     	}); 
-     		
-     	/*function saveMemberEducation()
-     		{}
-     	$("#btn_save_memberEducation").on('click',function ()
-     			{
-     			$.ajax({url:'getJsonDemo',type:'GET',dataType:'json',
-     				success:function(response)
-     				{
-     					alert("process..")
-     					
-     					for(var i=0; i<response.result.length; i++)
-     					{
-     						var data=response.result[i];
-     						var td='';
-     					for(var j=0; j<data.length; j++)
-     						{
-     						td=td+"<td>"+""+data[j]+"</td>";
-     						}
-     						var tr="<tr><td>"+i+"</td>"+td+"</tr>";
-     						$("#test_list_body").append(tr);
-     					}  						
-     						
-     					},
-     				error:function(e)
-     				{
-     				alert("error in process")
-     				$("#test_list tbody").append(tr);
-     				}			
-     			});
-     	});*/
-
+     	} 
     </script>
 </body>
 </html>

@@ -14,7 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -22,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class CategoryClass 
 {	
 	
-	public CategoryClass(){
-	}
+	public CategoryClass(){}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PK_category_class_id")
@@ -45,7 +44,21 @@ public class CategoryClass
 	@ManyToOne
 	@JoinColumn(name="FK_topic_id")
 	private TopicCategory topicCategory;
+	
+	
 		
+
+
+	public CategoryClass(CourseCategory courseCategory,
+			SubjectCategory subjectCategory, ChapterCategory chapterCategory,
+			TopicCategory topicCategory) {
+		super();
+		this.courseCategory = courseCategory;
+		this.subjectCategory = subjectCategory;
+		this.chapterCategory = chapterCategory;
+		this.topicCategory = topicCategory;
+	}
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy="categoryclassQFeed", cascade=CascadeType.ALL)
 	private Set<QFeedSubmission> qfeedSubmissionCategory;

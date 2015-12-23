@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Student Dashboard</title>
-  	<%@include file="../111111/common_head.jsp"%>
+  	<%@include file="../111112/qa_head.jsp"%> 
 	<section class="container">
 		<div class="qa-how-work">
 			<h2 class="center-heading">HOW IT'S WORKS</h2>
@@ -18,14 +18,14 @@
 		<div class="middle-block">
 			<div class="custom-heading"><span>RECENT OPEN QUESTION</span></div>
 				<div class="qa-unanswer-block clear-both">
-            		<div class="qa-give-ans-title">Why android game is not working?<a href="QA_Detalied_Que_Ans.html" class="detail-test right" title="Question Detail"></a></div>
+            		<div class="qa-give-ans-title">Why android game is not working?<a href="questionDetail?questionId" class="detail-test right" title="Question Detail"></a></div>
 					<div class="qa-give-ans-que-container">
 						<div class="qa-give-ans-detail" data-track-id="14521">
 							<p class="que_desc">I have been working on android apps for a long time but now I have decided to create a game aside with my pre-calculus final. I have completed the whole code and it works perfectly except one tiny issue. First of the game is based on flying pig(my classmate's face) avoiding top and bottom osticle. I developed an algorithm so that the obsticles are evenly spaced and based on random selection placed either as the top or bottom of the screen but never both at the same time!. The algorithm that needs improvement is in the 3rd code segment!</p>
 						 <div class="qa-give-ans-comment-detail" >
 							<ul>
 								<li><a class="add-comment" data-parent-id="14521" title="ADD COMMENT" data-comment-type=0></a></li>	
-								<li><a href="QA_Detalied_Que_Ans.html?dataParentId=14521"  class="post-answer" data-click-hint="1" title="POST ANSWER"></a></li>
+								<li><a href="questionDetail?dataParentId=14521"  class="post-answer" data-click-hint="1" title="POST ANSWER"></a></li>
 								<li><a class="view-comment" title="VIEW COMMENT" data-view-comment-id="14521"></a></li>
 								<li class="by"><a href="">Aadesh Mahajan</a></li>
 								<li class="on">31 July, 2015</li>
@@ -58,14 +58,14 @@
 		<div class="middle-block">
 			<div class="custom-heading"><span>RECENT GROUP QUESTION</span></div>
 			<div class="qa-unanswer-block clear-both">
-            	<div class="qa-give-ans-title">Why android game is not working?<a href="QA_Detalied_Que_Ans.html" class="detail-test right" title="Question Detail"></a></div>
+            	<div class="qa-give-ans-title">Why android game is not working?<a href="questionDetail?questionId" class="detail-test right" title="Question Detail"></a></div>
 				<div class="qa-give-ans-que-container">
 					<div class="qa-give-ans-detail" data-track-id="14522">
 						<p class="que_desc">I have been working on android apps for a long time but now I have decided to create a game aside with my pre-calculus final. I have completed the whole code and it works perfectly except one tiny issue. First of the game is based on flying pig(my classmate's face) avoiding top and bottom osticle. I developed an algorithm so that the obsticles are evenly spaced and based on random selection placed either as the top or bottom of the screen but never both at the same time!. The algorithm that needs improvement is in the 3rd code segment!</p>
 					 <div class="qa-give-ans-comment-detail" >
 						<ul>
 							<li><a class="add-comment" data-parent-id="14522" title="ADD COMMENT" data-comment-type=0></a></li>	
-							<li><a href="QA_Detalied_Que_Ans.html?dataParentId=14522"  class="post-answer" data-click-hint="1" title="POST ANSWER"></a></li>
+							<li><a href="questionDetail?dataParentId=14522"  class="post-answer" data-click-hint="1" title="POST ANSWER"></a></li>
 							<li><a class="view-comment" title="VIEW COMMENT" data-view-comment-id="14522"></a></li>
 							<li class="by"><a href="">Aadesh Mahajan</a></li>
 							<li class="on">31 July, 2015</li>

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +18,7 @@ import fss.webportal.lo.classes.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
 	private final String COMMON_ROOT="/betaVersion/111111/";
@@ -62,7 +64,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	  		.formLogin()
 	  		.loginPage(COMMON_ROOT+"preAccessLogin")
 	  		.loginProcessingUrl(COMMON_ROOT+"preAccessLogin.do")
+<<<<<<< HEAD
 	  		//.defaultSuccessUrl("/betaVersion/020011/dashboard")
+=======
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 	  		.failureUrl(COMMON_ROOT+"preAccessLogin.do?error")
 	  		.successHandler(new LoginSuccessHandler())
 	  		.and()

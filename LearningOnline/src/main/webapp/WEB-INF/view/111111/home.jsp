@@ -16,7 +16,7 @@
     <section id="main-slider" class="no-margin">
         <div class="carousel slide">
            <div class="container">
-                <div class="col-md-6 leftbar"><h2>Start learning from</br> real peoples</h2>
+                <div class="col-md-6 leftbar"><h2>Start learning from<br> real peoples</h2>
                     <div class="tbut1" style="width:250px; float:left; margin-top:60px;">
 	            <a href="preAccessLogin.html">JOIN FOR FREE</a>
 	            <span class="tag-line">Easy & Free</span>    

@@ -10,7 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | Corlate</title>
-	<%@include file="group_head.jsp"%>  
+	<%@ page isELIgnored ="false" %>
+    	<c:set var="menuAction" value="<%=UserPrincipal.getMenuAction()%>"/>
+	    <c:choose>
+		    <c:when test="${menuAction == '020011'}"><%@include file="../020011/editor_head.jsp"%></c:when>
+		    <c:when test="${menuAction == '002011'}"><%@include file="../002011/expert_head.jsp"%></c:when>
+		    <c:when test="${menuAction == '000211'}"><%@include file="../000211/stud_head.jsp"%></c:when>
+		    <c:otherwise><%@include file="../111111/common_head.jsp"%></c:otherwise>
+		</c:choose> 
     <section id="blog" class="container bg-clr-border">
         <div class="mid-center">
             <div class="group_home_top">

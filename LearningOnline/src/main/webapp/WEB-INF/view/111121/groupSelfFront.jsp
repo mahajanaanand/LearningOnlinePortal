@@ -10,7 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | Corlate</title>
-	<%@include file="group_head.jsp"%>  
+	 <%@ page isELIgnored ="false" %>
+    	<c:set var="menuAction" value="<%=UserPrincipal.getMenuAction()%>"/>
+	    <c:choose>
+		    <c:when test="${menuAction == '020011'}"><%@include file="../020011/editor_head.jsp"%></c:when>
+		    <c:when test="${menuAction == '002011'}"><%@include file="../002011/expert_head.jsp"%></c:when>
+		    <c:when test="${menuAction == '000211'}"><%@include file="../000211/stud_head.jsp"%></c:when>
+		    <c:otherwise></c:otherwise>
+		</c:choose> 
     <section id="blog" class="container bg-clr-border">
         <div class="mid-center">
             <div class="group_home_top">
@@ -21,7 +28,7 @@
 					</div>
 				   <div class="group_setting_icon center-text">
 					   <a class="setting_icon_balck" id="groups_setting_event" data-action-tag="close" title="SETTING"></a>
-				   	   <a class="group_request" title="CREATE NEW GROUP"></a>
+				   	   <a class="group_request" title="CREATE NEW GROUP" href="${applicationRoot}/111121/createGroup"></a>
 				   </div>
 				   <div class="dashboard_group_contaner">
                         <div class="parent create-group-white parent_open" id="groups_created_panel">MY OWN GROUPS</div>
@@ -63,7 +70,7 @@
 									<li class="letter J"><a href="#">Java 1.8</a><a href="#" class="remove-comment right top-posi" data-comment-remove-id="125478" title="REMOVE COMMENT"></a></li>
 									<li class="letter S"><a href="#">Servlet 3.0</a><a href="#" class="remove-comment right top-posi" data-comment-remove-id="125478" title="REMOVE COMMENT"></a></li>
 									<li class="letter A"><a href="#">Angular JS</a><a href="#" class="remove-comment right top-posi" data-comment-remove-id="125478" title="REMOVE COMMENT"></a></li>
-                                    <li class="no-border-bottom"><a href="categories.html" class="add-cat-icon-white">Add Category</a></li>
+                                    <li class="no-border-bottom"><a href="${applicationRoot}/111111/redirectCategory" class="add-cat-icon-white">Add Category</a></li>
                                 </ul>
                             </div>
                         </div>

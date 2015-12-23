@@ -31,6 +31,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import fss.webportal.lo.classes.ApplicationUtility;
 
 import fss.webportal.lo.classes.ApplicationUtility;
 
@@ -175,7 +176,11 @@ public class PersistenceConfig extends WebMvcConfigurerAdapter{
 	public String setApplicationRoot() {
 		ApplicationUtility.setRequestApplicationRoot(environment.getRequiredProperty("cdn.applicationRoot"));
 	    return ApplicationUtility.getRequestApplicationRoot();
+<<<<<<< HEAD
 	}
 
 	
+=======
+	}
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 }

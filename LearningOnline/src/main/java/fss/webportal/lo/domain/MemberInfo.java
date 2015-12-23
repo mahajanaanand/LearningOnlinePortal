@@ -99,6 +99,11 @@ public class MemberInfo implements Serializable
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "memberInfoQaquestion")
 	private Set<QAQuestion> qaQuestion;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="memberInfo", cascade=CascadeType.ALL) 
+	private Set<TopicCategory> topicCategories;
+	
 
 	public int getMemberId() {
 		return memberId;
@@ -298,6 +303,14 @@ public class MemberInfo implements Serializable
 
 	public void setQaQuestion(Set<QAQuestion> qaQuestion) {
 		this.qaQuestion = qaQuestion;
+	}
+
+	public Set<TopicCategory> getTopicCategories() {
+		return topicCategories;
+	}
+
+	public void setTopicCategories(Set<TopicCategory> topicCategories) {
+		this.topicCategories = topicCategories;
 	}
 	
 	

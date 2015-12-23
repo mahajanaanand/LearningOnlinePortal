@@ -12,6 +12,17 @@ import fss.webportal.lo.domain.MemberLogin;
 public class UserPrincipal 
 {	
 
+	public static String menuAction="0";
+	
+
+	public static String getMenuAction() {
+		return menuAction;
+	}
+
+	public static void setMenuAction(String menuAction) {
+		UserPrincipal.menuAction = menuAction;
+	}
+
 	public static String getCurrentUser()
 	{
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -39,6 +50,7 @@ public class UserPrincipal
 				 System.out.println("ROLE : "+role);
 				 switch (role) {
 						case "ROLE_EDITOR":{
+<<<<<<< HEAD
 							redirectUrl="/020011/dashboard";	
 							break;
 						}
@@ -47,6 +59,20 @@ public class UserPrincipal
 							break;
 						}	
 						case "ROLE_STUDENT":{
+=======
+							setMenuAction("020011");
+							System.out.println("ACTION : "+getMenuAction());
+							redirectUrl="/020011/dashboard";	
+							break;
+						}
+						case "ROLE_EXPERT":{
+							setMenuAction("002011");
+							redirectUrl="/002011/dashboard";	
+							break;
+						}	
+						case "ROLE_STUDENT":{
+							setMenuAction("000211");
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 							redirectUrl="/000211/dashboard";	
 							break;
 						}

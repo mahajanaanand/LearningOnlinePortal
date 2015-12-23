@@ -1,9 +1,12 @@
 package fss.webportal.lo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fss.webportal.lo.classes.JSONResponse;
 import fss.webportal.lo.dao.ApplicationDAO;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
@@ -43,4 +46,13 @@ public class ApplicationServiceImpl implements ApplicationService
 		
 		return applicationDAO.findMaxMemberId();
 	}
+	@Override
+	public <T> List<JSONResponse> requestCourseCategory(Class<T> className,String propertyId, String propertyTitle) {
+		return applicationDAO.requestCourseCategory(className,propertyId,propertyTitle);
+	}
+	@Override
+	public <T> List<JSONResponse> requestAllCategory(Class<T> className,String alias,String propertyId,String propertyTitle,String equalProperty,int whereId) {
+		return applicationDAO.requestAllCategory(className,alias,propertyId,propertyTitle,equalProperty,whereId);
+	}
+	
 }

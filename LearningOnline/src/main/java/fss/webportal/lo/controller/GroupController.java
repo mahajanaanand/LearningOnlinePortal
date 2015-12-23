@@ -1,10 +1,12 @@
 package fss.webportal.lo.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value="/betaVersion/111121/")
+@PreAuthorize("hasAnyRole('ADMIN','EXPERT','STUDENT')")
 public class GroupController {
 
 	@RequestMapping(value="/createGroup")
@@ -20,11 +22,6 @@ public class GroupController {
 	@RequestMapping(value="/groupHomeFront")
 	public String groupHomeFront(){
 		return "111121/groupHomeFront";
-	}
-	
-	@RequestMapping(value="/groupHomePage")
-	public String groupHomePage(){
-		return "111121/groupHomePage";
 	}
 	
 	@RequestMapping(value="/groupSelfFront")

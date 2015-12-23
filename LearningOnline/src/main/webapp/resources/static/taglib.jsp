@@ -4,7 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <spring:eval expression="@environment.getRequiredProperty('cdn.static')" var="cdnStatic" />
+<<<<<<< HEAD
 <spring:eval expression="@environment.getRequiredProperty('cdn.applicationRoot')" var="cdnAppRoot" />
+=======
+<spring:eval expression="@environment.getRequiredProperty('cdn.appRoot')" var="cdnAppRoot" />
+<spring:eval expression="@environment.getRequiredProperty('cdn.applicationRoot')" var="applicationRoot" />
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 <%-- <spring:eval expression="@environment.getRequiredProperty('cdn.dynamicData')" var="cdnDynamicData" />
 
 <spring:eval expression="@environment.getRequiredProperty('cdn.secure')" var="cdnSecure" />

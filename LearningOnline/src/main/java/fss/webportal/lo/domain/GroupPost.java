@@ -18,9 +18,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
+=======
+import com.fasterxml.jackson.annotation.JsonIgnore;
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 import org.springframework.format.annotation.DateTimeFormat;
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/23122015_1_Anand
 
 @Entity
 @Table(name="os_group_post")

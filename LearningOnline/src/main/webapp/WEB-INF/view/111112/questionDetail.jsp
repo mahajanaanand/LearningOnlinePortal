@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Student Dashboard</title>
-  	<%@include file="qa_head.jsp"%>    
+  	<%@include file="../111112/qa_head.jsp"%> 
 		<section class="container">
 		    <div class="qa-give-ans-container">
 		        <div class="qa-give-ans-left">

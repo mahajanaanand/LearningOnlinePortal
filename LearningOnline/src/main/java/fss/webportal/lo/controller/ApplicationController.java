@@ -2,6 +2,8 @@ package fss.webportal.lo.controller;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +20,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import fss.webportal.lo.classes.ApplicationUtility;
+import fss.webportal.lo.classes.UserPrincipal;
+
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import fss.webportal.lo.classes.JSONResponse;
+import fss.webportal.lo.classes.ApplicationUtility;
+import fss.webportal.lo.domain.ChapterCategory;
+import fss.webportal.lo.domain.CourseCategory;
 import fss.webportal.lo.domain.MemberInfo;
 import fss.webportal.lo.domain.MemberLogin;
+import fss.webportal.lo.domain.SubjectCategory;
+import fss.webportal.lo.domain.TopicCategory;
 import fss.webportal.lo.formWrapper.FormRegistration;
 import fss.webportal.lo.service.ApplicationService;
 
@@ -28,12 +41,11 @@ import fss.webportal.lo.service.ApplicationService;
 @RequestMapping(value="/betaVersion/111111/")
 public class ApplicationController{
 
-	private final static String UNSUCCESS="UNSUCCESS";
+	/*private final static String UNSUCCESS="UNSUCCESS";
 	private final static String SUCCESS="SUCCESS";
 	private final static String REQ_GP_REGISTER_TRYONCE="/registerTRYONCE";
 	private final static String VIEW_REGISTER_TRYONCE="registerTRYONCE";
-	private final static String REDIRECT_403="redirect:/static/403";
-	
+	private final static String REDIRECT_403="redirect:/static/403";*/
 	
 	
 	@Value("${logout}")
@@ -82,7 +94,32 @@ public class ApplicationController{
 	@RequestMapping(value="/memberProfile")
 	public String memberProfile(){
 		return "111111/memberProfile";
-	}	
+	}
+
+	
+	/*@RequestMapping(value="redirectCategory", method= RequestMethod.GET)
+	public @ResponseBody JSONResponse getJsonTest(){
+		JSONResponse jsonResponse=new JSONResponse(); 
+		jsonResponse.setStatus("SUCCESS");
+		
+		List<Object> list=new ArrayList<Object>();
+		List<String> rowList=new ArrayList<String>();
+		rowList.add("BE");
+		rowList.add("JAVA");
+		rowList.add("jan to dec");
+		rowList.add("1");
+		list.add(rowList);
+		List<String> rowList1=new ArrayList<String>();
+		rowList1.add("CA");
+		rowList1.add("ACOUNT");
+		rowList1.add("aug to sep");
+		rowList1.add("0");
+		list.add(rowList1);
+		jsonResponse.setResult(list);
+		System.out.println("AJAX SUCCESS");
+		return jsonResponse;
+	}*/
+	
 
 	@RequestMapping(value = "/preAccessLogin", method = RequestMethod.GET)
 	public ModelAndView loginTRYONCE(@RequestParam(value = "error", required = false) String error,
@@ -92,6 +129,7 @@ public class ApplicationController{
 			model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
 		}
 		if (logout != null) {
+			UserPrincipal.setMenuAction("0");
 			model.addObject("msg",MESSAGE_LOGOUT);
 		}
 		model.addObject("memberLogin",new MemberLogin());
@@ -100,20 +138,19 @@ public class ApplicationController{
 
 	}
 	@RequestMapping(value="/registerStepOne")
-	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo){
-		
-		
+	public ModelAndView registerStepOne( @ModelAttribute("registerStepOne")MemberInfo memberInfo)
+	{	
 			int maxMemberId=applicationService.findMaxMemberId();
-			memberInfo.setMemberIdManual(ApplicationUtility.requestManualId(maxMemberId));
-			memberInfo.setMemberSecurityNumber(ApplicationUtility.requestRandomNumber(9999));
+			memberInfo.setMemberIdManual(000);
+			memberInfo.setMemberSecurityNumber(000);
 			
 		    MemberInfo memberInfoDb=applicationService.saveMemberPersonalInfo(memberInfo);
 		    FormRegistration formRegistration=new FormRegistration();
 		   	formRegistration.setMemberInfo(memberInfoDb);
 			return new ModelAndView("111111/memberProfile","formRegistration", formRegistration);	
-			
 	}
-	private String getErrorMessage(HttpServletRequest request, String key) {
+	private String getErrorMessage(HttpServletRequest request, String key) 
+	{
 		Exception exception = (Exception) request.getSession().getAttribute(key);
 		String error = "";
 		if (exception instanceof BadCredentialsException) {
@@ -139,13 +176,46 @@ public class ApplicationController{
 		catch(Exception exception){ result=getStackTrace(exception);}
 		return result;
 	}*/
+	@RequestMapping(value="requestAllCategory", method= RequestMethod.GET)
+	public @ResponseBody JSONResponse requestAllCategory(@RequestParam("whereId") int whereId, @RequestParam("key") int key){
+		JSONResponse response=new JSONResponse(); 
+		response.setStatus("SUCCESS");
+		switch (key) {
+			case 1:{
+					List<JSONResponse> list=applicationService.requestCourseCategory(CourseCategory.class, "courseId", "courseTitle");
+					response.setResult(list);
+					break;
+			}
+			case 2:{
+					List<JSONResponse> list=applicationService.requestAllCategory(SubjectCategory.class,"courseCategory","subjectId","subjectTitle","courseCategory.courseId",whereId);
+					response.setResult(list);
+					break;
+			}
+			case 3:{
+				List<JSONResponse> list=applicationService.requestAllCategory(ChapterCategory.class,"subjectCategory","chapterId","chapterTitle","subjectCategory.subjectId",whereId);
+				response.setResult(list);
+				break;
+		}
+			case 4:{
+				List<JSONResponse> list=applicationService.requestAllCategory(TopicCategory.class,"chapterCategory","topicId","topicTitle","chapterCategory.chapterId",whereId);
+				response.setResult(list);
+				break;
+		}
+			default:
+				break;
+			}
+		
+		return response;
+	}
+	@SuppressWarnings("unused")
 	private int randInt() {
 	    Random rand = new Random();
 	    int randomNum = rand.nextInt(20);
 	    return randomNum;
 	}
 
-	public static String getStackTrace(final Throwable throwable) {
+	public static String getStackTrace(final Throwable throwable) 
+	{
 	     final StringWriter sw = new StringWriter();
 	     final PrintWriter pw = new PrintWriter(sw, true);
 	     throwable.printStackTrace(pw);

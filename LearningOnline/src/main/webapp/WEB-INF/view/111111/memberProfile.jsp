@@ -13,7 +13,7 @@
                 <div class="inner-center-container">
                    
                     <div class="cat-row-1">
-                    	 <form:form action="/abc" commandName="formRegistration" id="register_memberProfile">
+                    	<%--  <form:form action="/abc" commandName="formRegistration" id="register_memberProfile">
                         <div class="custom-heading"><span>PERSONAL INFORMATION</span></div>
                         <div class="cat-col1-1 left" style="width:45%;">
                            <div class="input_text_box_panel">
@@ -98,10 +98,10 @@
                                 <div class="input_box_bottom"><span class="eg_line"><span class="max_char" id="addressMaxChar">250</span></span></div>
                             </div>
                         </div>
-                       </form:form>
+                       </form:form> --%>
                     </div><!--/.row-->
                     <div class="cat-row-1">
-                    	<form:form id="registerMemberEducatoin" commandName="formRegistration">
+<%--                     	<form:form id="registerMemberEducatoin" commandName="formRegistration">
                         <div class="custom-heading"><span>EDUCATIONAL INFORMATION</span></div>
                         <div class="cat-col1-1 left" style="width:45%;">
                             <div class="col-sm-5 left" style="width:526px;">
@@ -161,9 +161,9 @@
                                 <a class="custom_button_blank save left">SAVE RECORD</a>
                             </div>
                         </div>
-                        </form:form>
+                        </form:form> --%>
                     </div>        
-
+					<a class="custom_button_blank save left" id="btn_save_memberEducation">SAVE RECORD</a>
                 </div>
                </div>
                 <div class="mid_container">
@@ -180,14 +180,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="odd">
-                                    <td>1</td>
-                                    <td>Master of Computer Application </td>
-                                    <td>Computer Engineeing</td>
-                                    <td>31/12/2009 - 31/12/2009</td>
-                                    <td><span class="upload_status_success">&nbsp;</span></td>
-                                    <td   style="text-align:center;"><a class="edit_row" href="#" title="Edit record">&nbsp;</a><a class="delete_row" href="#" title="Delete record">&nbsp;</a></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -272,7 +265,7 @@
                                 <th style="width:55px">YOE</th>
                                 <th style="width:180px">DURATION</th>
                                 <th style="width:125px">UPLOAD STATUS</th>
-                                <th  style="width:110px">ACTION</th>
+                                <th style="width:110px">ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -327,7 +320,7 @@
         </fieldset>
         
         <!--UPLOAD DOCUMENT CONTAINER START-->
-        <div id="overlay-upload-document-container">
+        <div id="overlay-upload-document-container">	
            <div class="inner-uploads-container">
                 <div class="uploading-guidline">
                    <div class="custom-heading-small">Guidelines for uploading documents</div>
@@ -363,38 +356,36 @@
     <%@include file="/resources/static/footer.jsp" %>
 	<%@include file="/resources/static/javascript.jsp" %>
     <script type="text/javascript">
-        $("#step2-3").on("click", function (){
+    
+       	    $("#step2-3").on("click", function (){
             $("#step3").fadeIn(500);
             $("#step2").hide();
-        });
-         $("#step3-2").on("click", function (){
+        	});
+            
+       	    $("#step3-2").on("click", function (){
             $("#step2").fadeIn(300);
             $("#step3").hide();
-        });
- 
+        	});
+            
          $("#reg_dateFrom").datepicker({ dateFormat: 'dd/mm/yy'});
          $("#reg_dateTo").datepicker({ dateFormat: 'dd/mm/yy'});
-     	 function saveMemberEducation(){
-     		alert("aadesh");
+     	 
+         function saveMemberEducation(){
      		 var educationInfo=$("#registerMemberEducatoin");
      		$.ajax({
-     			url:'memberProfile',type:'GET',dataType:json,data:educationInfo.serialize(),
+     			url:'memberProfile',type:'GET',dataType:'json',data:educationInfo.serialize(),
      			success:function(response){
      				if(response.status=="SUCCESS"){
-     					var educationInfo=response.result[0];
      				}
      				else if(response.status=="UNSUCCESS"){
      					alert("Proble in save to education");
      				}
-     			},
+				},
      			error:function(e){
-     				alert("error in process");
+     			alert("error in process");
      			}
-     			
      		});
-     	}
-     	$("#registerMemberEducatoin").find("#btn_save_memberEducation").on('click',saveMemberEducation);
-
+     	} 
     </script>
 </body>
 </html>

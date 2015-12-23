@@ -10,7 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Student Dashboard</title>
-    <%@include file="all_secure_head.jsp"%> 
+    <%@ page isELIgnored ="false" %>
+     <c:set var="menuAction" value="<%=UserPrincipal.getMenuAction()%>"/>
+   <c:choose>
+	    <c:when test="${menuAction == '020011'}"><%@include file="../020011/editor_head.jsp"%></c:when>
+	    <c:when test="${menuAction == '002011'}"><%@include file="../002011/expert_head.jsp"%></c:when>
+	    <c:when test="${menuAction == '000211'}"><%@include file="../000211/stud_head.jsp"%></c:when>
+	    <c:otherwise></c:otherwise>
+	 </c:choose>   	 
 	<section class="container">
        <div class="notification-page-container">
        		<div class="custom-heading"><span id="query_string">YOUR NOTIFICATIONS</span></div>

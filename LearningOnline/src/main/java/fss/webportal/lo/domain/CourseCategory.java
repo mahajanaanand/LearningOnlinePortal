@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
@@ -24,8 +25,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class CourseCategory implements Serializable
 {
 	
-	public CourseCategory(){
-    }
+	public CourseCategory(){}
+	
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -45,10 +46,16 @@ public class CourseCategory implements Serializable
     @Column(name="coc_remark")
     private String remark ;
    
-    @JsonIgnore
+    
+    public CourseCategory(int courseId) {
+		super();
+		this.courseId = courseId;
+	}
+
+	@JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy="courseCategory", cascade=CascadeType.ALL)
     private Set<SubjectCategory> subjectCategory;
- 
+
 	public int getCourseId() {
 		return courseId;
 	}
@@ -70,6 +77,7 @@ public class CourseCategory implements Serializable
 	}
 
 	public void setCourseModifyDate(Date courseModifyDate) {
+		courseModifyDate=new Date();
 		this.courseModifyDate = courseModifyDate;
 	}
 
@@ -78,6 +86,7 @@ public class CourseCategory implements Serializable
 	}
 
 	public void setStatus(int status) {
+		status=1;
 		this.status = status;
 	}
 
@@ -102,6 +111,12 @@ public class CourseCategory implements Serializable
 
 	public void setSubjectCategory(Set<SubjectCategory> subjectCategory) {
 		this.subjectCategory = subjectCategory;
+	}
+	
+	public void setCustomValue(Date courseModifyDate,String remark,int status){
+		this.remark = remark;
+		this.status=status;
+		this.courseModifyDate=courseModifyDate;
 	}
 	
 }

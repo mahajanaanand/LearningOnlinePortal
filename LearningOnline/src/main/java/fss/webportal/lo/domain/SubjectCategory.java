@@ -21,6 +21,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,11 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_subject_cat")
 public class SubjectCategory implements Serializable
 {
-	
-    public SubjectCategory(){
-	}
-
-	private static final long serialVersionUID = 1L;
+   	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PK_suc_subject_id")
@@ -50,6 +47,15 @@ public class SubjectCategory implements Serializable
 	private int flag;
 	@Column(name="suc_remark")
 	private String remark;
+		
+	public SubjectCategory(int subjectId) {
+		super();
+		this.subjectId = subjectId;
+	}
+
+	public SubjectCategory() {
+		super();
+	}
 	
 	@ManyToOne
 	@JoinTable(name="os_course_subject",  
@@ -65,8 +71,7 @@ public class SubjectCategory implements Serializable
 	@ManyToMany(fetch = FetchType.LAZY,mappedBy="subjectCategoryMcqTest",cascade=CascadeType.ALL)
 	private Set<MCQTest> mcqTestSubjectCategory;
 	
-	
-	
+
 	public int getSubjectId() {
 		return subjectId;
 	}
@@ -138,5 +143,11 @@ public class SubjectCategory implements Serializable
 	public void setMcqTestSubjectCategory(Set<MCQTest> mcqTestSubjectCategory) {
 		this.mcqTestSubjectCategory = mcqTestSubjectCategory;
 	}
-	
+	public void setCustomValue(Date subjectModifyDate,String remark,int status){
+		this.remark = remark;
+		this.status=status;
+		this.subjectModifyDate=subjectModifyDate;
+	}
+
+		
 }

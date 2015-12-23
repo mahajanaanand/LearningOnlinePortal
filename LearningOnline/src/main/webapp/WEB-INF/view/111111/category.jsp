@@ -1,6 +1,8 @@
+<%@page import="fss.webportal.lo.classes.ApplicationUtility"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@include file="/resources/static/taglib.jsp" %>
+ <c:set var="rootApp" value="<%=ApplicationUtility.getRequestApplicationRoot()%>"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -52,39 +54,25 @@
                     <div class="cat-col1-1">
                         <div class="col-heading">COURSE</div>    
                         <div class="col-list-container">
-                            <ul>
-                                <li class="">CA</li>
-                            </ul>
+                            <ul id="COURSE"></ul>
                         </div>    
                     </div>
                     <div class="cat-col1-2">
                     <div class="col-heading">SUBJECT</div>    
                         <div class="col-list-container">
-                            <ul>
-                                <li>Account</li>
-                                <li>Tax</li>
-                                <li>Statistic</li>
-                            </ul>
+                            <ul id="SUBJECT"></ul>
                         </div>
                     </div>
                     <div class="cat-col1-3">
                         <div class="col-heading">CHAPTER</div>    
                         <div class="col-list-container">
-                            <ul>
-                                <li>Account</li>
-                                <li>Tax</li>
-                                <li>Statistic</li>
-                            </ul>
+                            <ul id="CHAPTER"></ul>
                         </div>
                     </div>
                     <div class="cat-col1-4">
                         <div class="col-heading">TOPIC</div>    
                         <div class="col-list-container">
-                            <ul>
-                                <li>Account</li>
-                                <li>Tax</li>
-                                <li>Statistic</li>
-                            </ul>
+                            <ul id="TOPIC"></ul>
                         </div>
                     </div>
                 </div>
@@ -101,6 +89,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="appRoot" value="${rootApp}">
     <!--SELECT CATEGORY CONTAINER END-->       
 	  <%@include file="/resources/static/javascript.jsp" %>
 	  <script type="text/javascript">
@@ -108,7 +97,88 @@
 			 $("a#cancel-category-main").on('click',function (){
 				 window.location.replace("redirectHome");
 			 });
+			 requestListById('requestAllCategory',"GET",$("ul#COURSE"),0,'COURSE',1);
 		 });
+		 
+		 function requestListById(urlSuffix,methodType,elementId,whereId,li_Id,key){	
+			 whereId="whereId="+whereId+"&key="+key;
+			  $.ajax({
+		 			url:urlSuffix,type:methodType,dataType:'json',data:whereId,
+		 			success:function(response){
+		 				if(response.status=="SUCCESS"){
+		 					if(key==5){
+		 						responseDTOJSONRender(response.result,elementId);
+		 					}else{
+		 						responseJSONRender(response.result,elementId,li_Id);
+		 					}
+		 				}
+		 				else if(response.status=="ERROR"){
+		 					alert(response.message);
+		 				}
+					},
+		 			error:function(e){
+		 			alert("error in process");
+		 			}
+		 		});
+		 }
+		 function responseJSONRender(jsonResult,elementId,li_Id){
+			 elementId.empty();	
+			 var items=[];
+				for(var i=0; i<jsonResult.length; i++){
+					var data=jsonResult[i];
+
+					items.push('<li data-keyID='+data.responseId+' id='+li_Id+'-'+data.responseId+' class="operationEvent" data-event=0>'+data.responseTitle+'</li>');
+				}
+				elementId.append(items.join(''));
+		 }
+		 
+		 function responseDTOJSONRender(jsonResult,elementId){
+			// elementId.empty();	
+			 var items=[];
+				for(var i=0; i<jsonResult.length; i++){
+					var data=jsonResult[i];
+					items.push('<tr><td>'+data.categoryClassId+'</td><td>'+data.courseTitle+' > '+data.subjectTitle+' > '+data.chapterTitle+' > <span class="main-topic">'+data.topicTitle+'</span></td><td style=text-align:center><a class=edit_row data-edit='+data.categoryClassId+'>&nbsp;</a><a class=delete_row data-trash='+data.categoryClassId+'></td></tr>');
+				}
+				elementId.append(items.join(''));
+		 }
+		 $(document.body).on('click',"li.operationEvent",function (){
+			 var $this=$(this);
+			 var closestId=$this.closest("ul").attr("id");
+			 var elementId=$this.attr("data-keyID");
+			 switch (closestId) {	
+			 case 'COURSE':{
+					requestListById('requestAllCategory',"GET",$("ul#SUBJECT"),elementId,'SUBJECT',2);
+					getCheckBox($(this));
+					break;
+				 }
+			 case 'SUBJECT':{
+					requestListById('requestAllCategory',"GET",$("ul#CHAPTER"),elementId,'CHAPTER',3);
+					getCheckBox($(this));
+					break;
+				}
+			 case 'CHAPTER':{
+				 	requestListById('requestAllCategory',"GET",$("ul#TOPIC"),elementId,'TOPIC',4);
+				 	getCheckBox($(this));
+				 	break;
+			 } 
+			 case 'TOPIC':{
+				 	getCheckBox($(this));
+				 	break;
+			 } 
+				default:
+					break;
+				}	 
+		 });
+		 function getCheckBox($this){
+			var data_event=$this.attr("data-event");
+			if(data_event==0){
+				$this.addClass("check");
+				$this.attr("data-event",1);
+			}else if(data_event==1){
+				$this.removeClass("check");
+				$this.attr("data-event",0);
+			}
+		 }
 	</script>
 </body>
 </html>

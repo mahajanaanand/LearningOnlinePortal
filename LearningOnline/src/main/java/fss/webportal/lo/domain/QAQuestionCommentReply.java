@@ -20,9 +20,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="os_question_reply")
 public class QAQuestionCommentReply implements Serializable
 {
-	public QAQuestionCommentReply()
-	{}
-	private static final long SerialVersionUID=1L;
+	private static final long serialVersionUID = 1L;
+	
+	public QAQuestionCommentReply(){}
+
 	@Id
 	@Column(name="PK_qr_reply_id")
 	@GeneratedValue()

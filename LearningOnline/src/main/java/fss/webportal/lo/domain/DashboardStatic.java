@@ -13,9 +13,11 @@ import javax.persistence.Table;
 @Table(name="os_dashboard_static")
 public class DashboardStatic implements Serializable 
 {
-	public DashboardStatic()
-	{}
-	private static final long SerialVersionUID=1L;
+	private static final long serialVersionUID = 1L;
+
+	public DashboardStatic(){}
+	
+	
 	@Id
 	@Column(name="PK_mi_member_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
